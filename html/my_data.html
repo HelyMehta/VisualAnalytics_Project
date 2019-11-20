@@ -4,6 +4,8 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+
 	</head>
 	<body class="subpage">
 
@@ -29,5 +31,34 @@
 					</header>
 
           <div class="row">
+<script>
+	d3.csv("http://35.229.64.212/data/Cai_data.csv", function(d) {
+  	return {
+			id: d.id,
+			name:d.name,
+			popularity:d.popularity,
+			danceability:d.danceability,
+			energy:d.energy,
+			key:d.key,
+			loudness:d.loudness,
+			mode:d.mode,
+			speechiness:d.speechiness,
+			acousticness:d.acousticness,
+			instrumentalness: d.instrumentalness,
+			liveness:d.liveness,
+			valence:d.valence,
+			tempo:d.tempo,
+			type: d.type,
+			uri:d.uri,
+			track_href:d.track_href,
+			analysis_url:d.analysis_url,
+			duration_ms:d.duration_ms,
+			time_signature:d.time_signature,
+			team_member_id:d.team_member_id
+  	};
+	}).then(function(data) {
+  console.log(data);
+});
+</script>
           </div>
-      </section>  
+      </section>
