@@ -60,7 +60,7 @@ var parcoords = d3.parcoords()("#example")
     });
 
 // load csv file and create the chart
-d3.csv('data/nutrients.csv', function(data) {
+d3.csv('http://35.229.64.212/data/Combined_data.csv', function(data) {
   // slickgrid needs each data element to have an id
   data.forEach(function(d,i) { d.id = d.id || i; });
 
@@ -111,7 +111,7 @@ d3.csv('data/nutrients.csv', function(data) {
     var x = a[sortcol], y = b[sortcol];
     return (x == y ? 0 : (x > y ? 1 : -1));
   }
-  
+
   // click header to sort grid column
   grid.onSort.subscribe(function (e, args) {
     sortdir = args.sortAsc ? 1 : -1;

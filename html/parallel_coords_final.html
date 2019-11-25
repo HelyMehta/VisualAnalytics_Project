@@ -1,0 +1,151 @@
+<!doctype html>
+<title>Linking to Data Table</title>
+<link rel="stylesheet" type="text/css" href="../d3/d3.parcoords.css">
+<!--<link rel="stylesheet" type="text/css" href="../d3/style.css">-->
+<style>
+/* data table styles */
+.row, .header { clear: left; font-size: 12px; line-height: 18px; height: 18px; }
+.row:nth-child(odd) { background: rgba(0,0,0,0.05); }
+.header { font-weight: bold; }
+.cell { float: left; overflow: hidden; white-space: nowrap; width: 100px; height: 18px; }
+.col-0 { width: 180px; }
+</style>
+<script src="../d3/d3.min.js"></script>
+<script src="../d3/d3.parcoords.js"></script>
+<script src="../d3/divgrid.js"></script>
+<div id="select_member">
+  <select id="team_member" name="team_member" onchange="renderPCP(this.value);">
+    <option value=""></option>
+    <option value="mem_1">Hely</option>
+    <option value="mem_2">Alex</option>
+    <option value="mem_3">Rucha</option>
+    <option value="mem_4">Cai</option>
+  </select>
+</div>
+<div id="example" class="parcoords" style="height:200px;"></div>
+<div id="grid"></div>
+<!--<p>An extension of the <a href="brushing.html">bushing example</a> which links the chart to a data table. When hovering over the table, that row of data is highlighted in the chart. When brushing, the data in the table is updated.</p>
+<p>The table is <a href="http://bl.ocks.org/3687826">divgrid</a>, a simple <a href="http://bost.ocks.org/mike/chart/">reusable chart</a> that follows <a href="http://bl.ocks.org/3808218">general update pattern I</a>.</p>
+<p>Divgrid isn't fast when updating with hundreds or thousands of rows, so <strong>only the first 10 rows of the data are shown</strong>. For better performance, use a more sophisticated data grid like <a href="https://github.com/mleibman/SlickGrid">SlickGrid</a>.</p>
+<p>There is an <a href="http://exposedata.com/parallel/">old example</a> of SlickGrid with parallel coordinates. In that version the SVG is a bottleneck. An example of SlickGrid with this library should appear in the next few weeks (Nov-Dec, 2012).</p>-->
+<script id="brushing">// quantitative color scale
+//var member_id;
+function get_member_id(mem_id){
+  console.log(mem_id);
+}
+
+var blue_to_brown = d3.scale.linear()
+  .domain([0,100])
+  .range([d3.rgb("#007AFF"), d3.rgb('#FFF500')])
+  .interpolate(d3.interpolateLab);
+
+var color = function(d) { return blue_to_brown(d['popularity']); };
+
+var parcoords = d3.parcoords()("#example")
+  .color(color)
+  .alpha(0.4);
+
+// load csv file and create the chart
+function renderPCP(mem_id){
+  console.log(mem_id);
+d3.csv('http://35.229.64.212/data/Combined_data.csv', function(data) {
+  var attr_data= data.filter(function(d) {
+    if(mem_id==""){
+      return data;
+    }
+    else {
+      return d.team_member_id == mem_id;
+    }
+});
+var dimensions = {
+	"popularity":
+		{
+			orient: 'left',
+			type: 'number',
+			tickPadding: 5,
+      ticks:4,
+      tickValues:[20,40,60,80]
+		},
+   "valence":
+   {
+     orient: 'left',
+     type: 'number',
+     tickPadding:5,
+     innerTickSize:5,
+     ticks: 5
+   },
+   "danceability":
+   {
+     orient:'left',
+     type:'number',
+     tickPadding:5,
+     innerTickSize:2,
+     ticks: 4,
+     //tickValues:
+   },
+   "speechiness":
+   {
+     orient:'left',
+     type:'number',
+     tickPadding:5,
+     innerTickSize:2,
+     ticks: 4,
+     //tickValues:
+   },
+   "loudness":
+   {
+     orient:'left',
+     type:'number',
+     tickPadding:5,
+     innerTickSize:2,
+     ticks: 4,
+     //tickValues:
+   },
+
+   "tempo":
+   {
+     orient:'left',
+     type:'number',
+     tickPadding:5,
+     innerTickSize:2,
+     ticks: 4,
+     //tickValues:
+   },
+
+  };
+  parcoords
+    .data(attr_data)
+    .hideAxis(["id","name","team_member_id","key","mode","speechiness","acousticness","liveness","instrumentalness","duration_ms","time_signature"])
+    //.ticks(5)
+    .dimensions(dimensions)
+    .render()
+    .brushMode("1D-axes");  // enable brushing
+
+  // create data table, row hover highlighting
+  var grid = d3.divgrid();
+  d3.select("#grid")
+    .datum(attr_data)
+    //.columns(["name"])
+    .call(grid)
+    .selectAll(".row")
+    .on({
+      "mouseover": function(d) { parcoords.highlight([d]) },
+      "mouseout": parcoords.unhighlight
+    });
+    grid.columns(["name","popularity","danceability","energy","valence","tempo","speechiness","acousticness","instrumentalness","liveness"]);
+    d3.select("#grid").call(grid);
+  // update data table on brush event
+  parcoords.on("brush", function(d) {
+    d3.select("#grid")
+      .datum(d)
+      .call(grid)
+      .selectAll(".row")
+      .on({
+        "mouseover": function(d) { parcoords.highlight([d]) },
+        "mouseout": parcoords.unhighlight
+      });
+  });
+});
+}
+renderPCP("");
+</script>
