@@ -15,14 +15,14 @@
 <script src="../d3/divgrid.js"></script>
 <div id="select_member">
   <select id="team_member" name="team_member" onchange="renderPCP(this.value);">
-    <option value=""></option>
+    <option value="All">All</option>
     <option value="mem_1">Hely</option>
     <option value="mem_2">Alex</option>
     <option value="mem_3">Rucha</option>
     <option value="mem_4">Cai</option>
   </select>
 </div>
-<div id="example" class="parcoords" style="height:200px;"></div>
+<div id="example" class="parcoords" style="height:350px;"></div>
 <div id="grid"></div>
 <!--<p>An extension of the <a href="brushing.html">bushing example</a> which links the chart to a data table. When hovering over the table, that row of data is highlighted in the chart. When brushing, the data in the table is updated.</p>
 <p>The table is <a href="http://bl.ocks.org/3687826">divgrid</a>, a simple <a href="http://bost.ocks.org/mike/chart/">reusable chart</a> that follows <a href="http://bl.ocks.org/3808218">general update pattern I</a>.</p>
@@ -36,7 +36,7 @@ function get_member_id(mem_id){
 
 var blue_to_brown = d3.scale.linear()
   .domain([0,100])
-  .range([d3.rgb("#007AFF"), d3.rgb('#FFF500')])
+  .range([d3.rgb('#FFF500'), d3.rgb("#007AFF")])
   .interpolate(d3.interpolateLab);
 
 var color = function(d) { return blue_to_brown(d['popularity']); };
@@ -44,62 +44,83 @@ var color = function(d) { return blue_to_brown(d['popularity']); };
 var parcoords = d3.parcoords()("#example")
   .color(color)
   .alpha(0.4);
+var sltBrushMode = d3.select('#team_member');
 
 // load csv file and create the chart
 function renderPCP(mem_id){
   console.log(mem_id);
 d3.csv('http://35.229.64.212/data/Combined_data.csv', function(data) {
+  sltBrushMode.on('change', function() {
+  parcoords.brushReset();
+});
   var attr_data= data.filter(function(d) {
-    if(mem_id==""){
+    if(mem_id=="All"){
       return data;
     }
     else {
       return d.team_member_id == mem_id;
     }
 });
+var popularity = d3.scale.linear()
+  .domain([100,0])
+  .range([0,300]);
+  //.range([margin,width-margin]);
+var features = d3.scale.linear()
+    .domain([1,0])
+    .range([0,300]);
+var loud=d3.scale.linear()
+.domain([0,-60])
+.range([0,300]);
+var tempo=d3.scale.linear()
+.domain([250,0])
+.range([0,300]);
 var dimensions = {
 	"popularity":
 		{
 			orient: 'left',
 			type: 'number',
 			tickPadding: 5,
-      ticks:4,
-      tickValues:[20,40,60,80]
+      ticks:6,
+      tickValues:[0,20,40,60,80,100],
+      yscale:popularity
 		},
    "valence":
    {
      orient: 'left',
      type: 'number',
      tickPadding:5,
-     innerTickSize:5,
-     ticks: 5
+     ticks: 6,
+     tickValues:[0,0.2,0.4,0.6,0.8,1.0],
+     yscale:features
    },
    "danceability":
    {
      orient:'left',
      type:'number',
      tickPadding:5,
-     innerTickSize:2,
-     ticks: 4,
-     //tickValues:
+     //innerTickSize:2,
+     ticks: 6,
+     tickValues:[0,0.2,0.4,0.6,0.8,1.0],
+     yscale:features
    },
    "speechiness":
    {
      orient:'left',
      type:'number',
      tickPadding:5,
-     innerTickSize:2,
-     ticks: 4,
-     //tickValues:
+     outerTickSize:5,
+     ticks: 6,
+     tickValues:[0,0.2,0.4,0.6,0.8,1.0],
+     yscale:features
    },
    "loudness":
    {
      orient:'left',
      type:'number',
      tickPadding:5,
-     innerTickSize:2,
-     ticks: 4,
-     //tickValues:
+     ticks: 7,
+     tickValues:[-60,-50,-40,-30,-20,-10,0],
+     yscale:loud
    },
 
    "tempo":
@@ -107,10 +128,11 @@ var dimensions = {
      orient:'left',
      type:'number',
      tickPadding:5,
-     innerTickSize:2,
-     ticks: 4,
-     //tickValues:
-   },
+     innerTickSize:5,
+     ticks:6,
+     tickValues:[0,50,100,150,200,250],
+     yscale:tempo
+   }
 
   };
   parcoords
@@ -147,5 +169,5 @@ var dimensions = {
   });
 });
 }
-renderPCP("");
+renderPCP("All");
 </script>
