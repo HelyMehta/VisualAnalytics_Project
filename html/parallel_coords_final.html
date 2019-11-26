@@ -4,11 +4,12 @@
 <!--<link rel="stylesheet" type="text/css" href="../d3/style.css">-->
 <style>
 /* data table styles */
-.row, .header { clear: left; font-size: 12px; line-height: 18px; height: 18px; }
+.row, .header { clear: left; font-size: 12px; line-height: 18px; height: 18px;  }
 .row:nth-child(odd) { background: rgba(0,0,0,0.05); }
 .header { font-weight: bold; }
+/*row:nth-child(1){width:150px};*/
 .cell { float: left; overflow: hidden; white-space: nowrap; width: 100px; height: 18px; }
-.col-0 { width: 180px; }
+.col-0 { width: 300px; }
 </style>
 <script src="../d3/d3.min.js"></script>
 <script src="../d3/d3.parcoords.js"></script>
@@ -38,7 +39,80 @@ var blue_to_brown = d3.scale.linear()
   .domain([0,100])
   .range([d3.rgb('#FFF500'), d3.rgb("#007AFF")])
   .interpolate(d3.interpolateLab);
+  var popularity = d3.scale.linear()
+    .domain([100,0])
+    .range([0,300]);
+    //.range([margin,width-margin]);
+  var features = d3.scale.linear()
+      .domain([1,0])
+      .range([0,300]);
+  var loud=d3.scale.linear()
+  .domain([0,-20])
+  .range([0,300]);
+  var tempo=d3.scale.linear()
+  .domain([250,0])
+  .range([0,300]);
+  var dimensions = {
+  	"popularity":
+  		{
+  			orient: 'left',
+  			type: 'number',
+  			tickPadding: 5,
+        ticks:6,
+        tickValues:[0,20,40,60,80,100],
+        yscale:popularity
+  		},
+     "valence":
+     {
+       orient: 'left',
+       type: 'number',
+       tickPadding:5,
+       ticks: 6,
+       tickValues:[0,0.2,0.4,0.6,0.8,1.0],
+       yscale:features
+     },
+     "danceability":
+     {
+       orient:'left',
+       type:'number',
+       tickPadding:5,
+       //innerTickSize:2,
+       ticks: 6,
+       tickValues:[0,0.2,0.4,0.6,0.8,1.0],
+       yscale:features
+     },
+     "speechiness":
+     {
+       orient:'left',
+       type:'number',
+       tickPadding:5,
+       outerTickSize:5,
+       ticks: 6,
+       tickValues:[0,0.2,0.4,0.6,0.8,1.0],
+       yscale:features
+     },
+     "loudness":
+     {
+       orient:'left',
+       type:'number',
+       tickPadding:5,
+       ticks: 5,
+       tickValues:[-20,-15,-10,-5,0],
+       yscale:loud
+     },
 
+     "tempo":
+     {
+       orient:'left',
+       type:'number',
+       tickPadding:5,
+       innerTickSize:5,
+       ticks:6,
+       tickValues:[0,50,100,150,200,250],
+       yscale:tempo
+     }
+
+    };
 var color = function(d) { return blue_to_brown(d['popularity']); };
 
 var parcoords = d3.parcoords()("#example")
@@ -61,80 +135,7 @@ d3.csv('http://35.229.64.212/data/Combined_data.csv', function(data) {
       return d.team_member_id == mem_id;
     }
 });
-var popularity = d3.scale.linear()
-  .domain([100,0])
-  .range([0,300]);
-  //.range([margin,width-margin]);
-var features = d3.scale.linear()
-    .domain([1,0])
-    .range([0,300]);
-var loud=d3.scale.linear()
-.domain([0,-60])
-.range([0,300]);
-var tempo=d3.scale.linear()
-.domain([250,0])
-.range([0,300]);
-var dimensions = {
-	"popularity":
-		{
-			orient: 'left',
-			type: 'number',
-			tickPadding: 5,
-      ticks:6,
-      tickValues:[0,20,40,60,80,100],
-      yscale:popularity
-		},
-   "valence":
-   {
-     orient: 'left',
-     type: 'number',
-     tickPadding:5,
-     ticks: 6,
-     tickValues:[0,0.2,0.4,0.6,0.8,1.0],
-     yscale:features
-   },
-   "danceability":
-   {
-     orient:'left',
-     type:'number',
-     tickPadding:5,
-     //innerTickSize:2,
-     ticks: 6,
-     tickValues:[0,0.2,0.4,0.6,0.8,1.0],
-     yscale:features
-   },
-   "speechiness":
-   {
-     orient:'left',
-     type:'number',
-     tickPadding:5,
-     outerTickSize:5,
-     ticks: 6,
-     tickValues:[0,0.2,0.4,0.6,0.8,1.0],
-     yscale:features
-   },
-   "loudness":
-   {
-     orient:'left',
-     type:'number',
-     tickPadding:5,
-     ticks: 7,
-     tickValues:[-60,-50,-40,-30,-20,-10,0],
-     yscale:loud
-   },
 
-   "tempo":
-   {
-     orient:'left',
-     type:'number',
-     tickPadding:5,
-     innerTickSize:5,
-     ticks:6,
-     tickValues:[0,50,100,150,200,250],
-     yscale:tempo
-   }
-
-  };
   parcoords
     .data(attr_data)
     .hideAxis(["id","name","team_member_id","key","mode","speechiness","acousticness","liveness","instrumentalness","duration_ms","time_signature"])
