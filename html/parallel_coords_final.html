@@ -1,35 +1,60 @@
 <!doctype html>
-<title>Linking to Data Table</title>
+<html>
+<title>Parallel Coordinate Plot</title>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="assets/css/main.css" />
+<link rel="shortcut icon" href="images/spotify-icons-logos/icons/01_RGB/02_PNG/Spotify_Icon_RGB_Green.png">
+
 <link rel="stylesheet" type="text/css" href="../d3/d3.parcoords.css">
+<script src="../d3/d3.min.js"></script>
+<script src="../d3/d3.parcoords.js"></script>
+<script src="../d3/divgrid.js"></script>
+
+</head>
 <!--<link rel="stylesheet" type="text/css" href="../d3/style.css">-->
 <style>
 /* data table styles */
 .row, .header { clear: left; font-size: 12px; line-height: 18px; height: 18px;  }
 .row:nth-child(odd) { background: rgba(0,0,0,0.05); }
-.header { font-weight: bold; }
+.header { font-weight: bold; text-align:center }
 /*row:nth-child(1){width:150px};*/
-.cell { float: left; overflow: hidden; white-space: nowrap; width: 100px; height: 18px; }
-.col-0 { width: 300px; }
+.cell { float: left; overflow: hidden; white-space: nowrap; width:90px; height: 18px;text-align:center }
+.col-1 { width: 300px; text-align:left }
+.col-0 {width:50px;}
+
 </style>
-<script src="../d3/d3.min.js"></script>
-<script src="../d3/d3.parcoords.js"></script>
-<script src="../d3/divgrid.js"></script>
-<div id="select_member">
-  <select id="team_member" name="team_member" onchange="renderPCP(this.value);">
-    <option value="All">All</option>
-    <option value="mem_1">Hely</option>
-    <option value="mem_2">Alex</option>
-    <option value="mem_3">Rucha</option>
-    <option value="mem_4">Cai</option>
-  </select>
-</div>
-<div id="example" class="parcoords" style="height:350px;"></div>
-<div id="grid"></div>
+<body class="subpage">
+  <header id="header">
+    <div class="inner">
+      <a href="index.html" class="logo"><strong>Visualize</strong> Your Music</a>
+      <nav id="nav">
+        <a href="index.html">Home</a>
+        <a href="my_data.html">Visualize Data</a>
+        <a href="compare_data.html">Compare Data</a>
+      </nav>
+      <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+    </div>
+  </header>
+	<section id="main" >
+    <select id="team_member" name="team_member" onchange="renderPCP(this.value);"style="width:auto;">
+      <option value="All">All</option>
+      <option value="mem_1">Hely</option>
+      <option value="mem_2">Alex</option>
+      <option value="mem_3">Rucha</option>
+      <option value="mem_4">Cai</option>
+    </select>
+<div id="parallel_coord" class="parcoords" style="height:350px;"></div>
+<button class="button special small" id="btnReset" style="width:auto">Reset Brushes</button>
+<div id="grid" style="color:black"></div>
 <!--<p>An extension of the <a href="brushing.html">bushing example</a> which links the chart to a data table. When hovering over the table, that row of data is highlighted in the chart. When brushing, the data in the table is updated.</p>
 <p>The table is <a href="http://bl.ocks.org/3687826">divgrid</a>, a simple <a href="http://bost.ocks.org/mike/chart/">reusable chart</a> that follows <a href="http://bl.ocks.org/3808218">general update pattern I</a>.</p>
 <p>Divgrid isn't fast when updating with hundreds or thousands of rows, so <strong>only the first 10 rows of the data are shown</strong>. For better performance, use a more sophisticated data grid like <a href="https://github.com/mleibman/SlickGrid">SlickGrid</a>.</p>
 <p>There is an <a href="http://exposedata.com/parallel/">old example</a> of SlickGrid with parallel coordinates. In that version the SVG is a bottleneck. An example of SlickGrid with this library should appear in the next few weeks (Nov-Dec, 2012).</p>-->
+</section>
 <script id="brushing">// quantitative color scale
+d3.select('#btnReset').on('click', function() {parcoords.brushReset();})
 //var member_id;
 function get_member_id(mem_id){
   console.log(mem_id);
@@ -115,7 +140,7 @@ var blue_to_brown = d3.scale.linear()
     };
 var color = function(d) { return blue_to_brown(d['popularity']); };
 
-var parcoords = d3.parcoords()("#example")
+var parcoords = d3.parcoords()("#parallel_coord")
   .color(color)
   .alpha(0.4);
 var sltBrushMode = d3.select('#team_member');
@@ -155,7 +180,7 @@ d3.csv('http://35.229.64.212/data/Combined_data.csv', function(data) {
       "mouseover": function(d) { parcoords.highlight([d]) },
       "mouseout": parcoords.unhighlight
     });
-    grid.columns(["name","popularity","danceability","energy","valence","tempo","speechiness","acousticness","instrumentalness","liveness"]);
+    grid.columns(["Sr_no","name","popularity","danceability","energy","valence","tempo","speechiness","acousticness","instrumentalness","liveness"]);
     d3.select("#grid").call(grid);
   // update data table on brush event
   parcoords.on("brush", function(d) {
@@ -172,3 +197,5 @@ d3.csv('http://35.229.64.212/data/Combined_data.csv', function(data) {
 }
 renderPCP("All");
 </script>
+</body>
+</html>

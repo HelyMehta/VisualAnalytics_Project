@@ -1,12 +1,33 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
+<!doctype html>
+<html>
+<title>Boxplots</title>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="assets/css/main.css" />
+<link rel="shortcut icon" href="images/spotify-icons-logos/icons/01_RGB/02_PNG/Spotify_Icon_RGB_Green.png">
 
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
 <script src="https://unpkg.com/simple-statistics@6.0.1/dist/simple-statistics.min.js"></script>
+</head>
+
+<body class="subpage">
+  <header id="header">
+    <div class="inner">
+      <a href="index.html" class="logo"><strong>Visualize</strong> Your Music</a>
+      <nav id="nav">
+        <a href="index.html">Home</a>
+        <a href="my_data.html">Visualize Data</a>
+        <a href="compare_data.html">Compare Data</a>
+      </nav>
+      <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+    </div>
+  </header>
+	<section id="main" >
 
 <p>Select a song trait:
-    <select onchange="renderVis(this.options[this.selectedIndex].value);">
+    <select onchange="renderVis(this.options[this.selectedIndex].value);" style="width:auto">
         <option value="danceability">danceability</option>
         <option value="energy">energy</option>
         <option value="valence">valence</option>
@@ -17,7 +38,7 @@
 
 <!-- div where graph will take place -->
 <div id="my_dataviz"></div>
-
+</body>
 <script>
 
     // set the dimensions and margins of the graph
