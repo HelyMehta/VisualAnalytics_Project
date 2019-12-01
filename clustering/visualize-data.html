@@ -45,23 +45,35 @@
 var height = 400;
 var width = 600;
 var margin = 40;
-var data =[];
-for(var i = 0; i < 100; i++) {
-	data.push({
-    	danceability: Math.random(),
-        energy: Math.random(),
-        c: Math.random(),
-        popularity: Math.random(),
-        });
-}
+var data = [];
+// for(var i = 0; i < 100; i++) {
+// 	data.push({
+//     	danceability: Math.random(),
+//         energy: Math.random(),
+//         c: Math.random(),
+//         popularity: Math.random(),
+//         });
+// }
 
 // alert(data[0]);
 
 var csv_datafile = "./../csv_data/Rucha_data/Rucha_data.csv"
 
-// d3.csv(csv_datafile, function(d) {
-//   data = d;
-// });
+d3.csv(csv_datafile, function(filedata) {
+  // console.log("FILEDATA:", filedata);
+  data.push(filedata);
+  // filedata.forEach(function(d) {
+  //   // console.log("Individual", d);
+  //   data.push({
+  //     danceability: d.danceability,
+  //     energy: d.energy,
+  //     popularity: d.popularity,
+  //   });
+  // });
+  // data = d;
+});
+
+console.log(data);
 
 var labelX = 'Danceability';
 var labelY = 'Energy';
@@ -73,22 +85,38 @@ var svg = d3.select('.chart')
                     .append("g")
                     .attr("transform", "translate(" + margin + "," + margin + ")");
                     
+// var x = d3.scale.linear()
+// 					            .domain([d3.min(data, function (d) { return d.danceability; }), d3.max(data, function (d) { return d.danceability; })])
+// 					            .range([0, width]);
+
 var x = d3.scale.linear()
-					            .domain([d3.min(data, function (d) { return d.danceability; }), d3.max(data, function (d) { return d.danceability; })])
-					            .range([0, width]);
+                      .domain([0, 1])
+                      .range([0, width]);
+
+// var y = d3.scale.linear()
+// 					            .domain([d3.min(data, function (d) { return d.energy; }), d3.max(data, function (d) { return d.energy; })])
+// 					            .range([height, 0]);
 
 var y = d3.scale.linear()
-					            .domain([d3.min(data, function (d) { return d.energy; }), d3.max(data, function (d) { return d.energy; })])
-					            .range([height, 0]);
+                      .domain([0, 1])
+                      .range([height, 0]);
+
+// var scale = d3.scale.sqrt()
+// 					            .domain([d3.min(data, function (d) { return d.popularity; }), d3.max(data, function (d) { return d.popularity; })])
+// 					            .range([1, 20]);
 
 var scale = d3.scale.sqrt()
-					            .domain([d3.min(data, function (d) { return d.popularity; }), d3.max(data, function (d) { return d.popularity; })])
-					            .range([1, 20]);
+                      .domain([1, 100])
+                      .range([1, 20]);
+
+// var opacity = d3.scale.sqrt()
+// 					            .domain([d3.min(data, function (d) { return d.popularity; }), d3.max(data, function (d) { return d.popularity; })])
+// 					            .range([1, .5]);
 
 var opacity = d3.scale.sqrt()
-					            .domain([d3.min(data, function (d) { return d.popularity; }), d3.max(data, function (d) { return d.popularity; })])
-					            .range([1, .5]);
-                                
+                      .domain([1, 100])
+                      .range([1, .5]);
+
 var color = d3.scale.category10();
 
 var xAxis = d3.svg.axis().scale(x);
