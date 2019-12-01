@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="assets/css/main.css" />
 <link rel="shortcut icon" href="images/spotify-icons-logos/icons/01_RGB/02_PNG/Spotify_Icon_RGB_Green.png">
-
+<script src="https://unpkg.com/simple-statistics@6.0.1/dist/simple-statistics.min.js"></script>
 <style>
 .axis path,
 .axis line {
@@ -71,7 +71,6 @@
 
   <div id="first_col" style="float:left;width:50%">
     <div id="member_graph"></div>
-
     <div id="global_graph"></div>
   </div>
 <div id="second_col" style="float:right;width:50%">
@@ -159,7 +158,7 @@ var new_data=data.filter(function(d){
 });
 console.log(new_data);
 var i=0;
-var member_pop=new_data.filter(function(d){return d.team_member_id==member_name});
+var member_data=new_data.filter(function(d){return d.team_member_id==member_name});
 var global_data=new_data.filter(function(d){return d.team_member_id=="global"});
 var xValue = function(d) {
     //if(d.team_member_id==member_name){
@@ -251,7 +250,7 @@ return d[property_name];}}, // data -> value
       .text("Member Data vs "+ property_name.charAt(0).toUpperCase()+(property_name.slice(1)));
   // draw dots
   svg.selectAll(".dot")
-      .data(member_pop)
+      .data(member_data)
     .enter().append("circle")
       .attr("class", "dot")
       .attr("r", 3.5)
