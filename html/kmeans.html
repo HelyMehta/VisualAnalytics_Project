@@ -1,0 +1,603 @@
+<!doctype html>
+<html>
+<title>Visualize Your Music Clusters</title>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="assets/css/main.css" />
+<link rel="shortcut icon" href="images/spotify-icons-logos/icons/01_RGB/02_PNG/Spotify_Icon_RGB_Green.png">
+
+<style>
+    .chart rect {
+        fill: steelblue;
+    }
+
+        .chart rect:hover {
+            fill: turquoise;
+        }
+
+    .chart .rectM {
+        stroke: green;
+        stroke-width: 1;
+        fill: green;
+        fill-opacity: .2;
+    }
+
+        .chart .rectM:hover {
+            fill: green;
+            fill-opacity: .5;
+        }
+
+    .chart text {
+        font: 12px sans-serif;
+    }
+
+    .chart .title {
+        font: 15px sans-serif;
+    }
+
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
+
+    .tooltip {
+  position: absolute;
+  width: 200px;
+  height: 28px;
+  pointer-events: none;
+  font: 10px sans-serif;
+}
+
+    </style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+
+</head>
+
+<body>
+
+<body class="subpage">
+  <header id="header">
+    <div class="inner">
+      <a href="index.html" class="logo"><strong>Visualize</strong> Your Music</a>
+      <nav id="nav">
+        <a href="index.html">Home</a>
+        <a href="my_data.html">Visualize Data</a>
+        <a href="compare_data.html">Compare Data</a>
+      </nav>
+      <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+    </div>
+  </header>
+  <section id="main" >
+    <div class='row' style='padding: 10px;'>
+      <h1 style="font-weight: bold;"> <a href='my_data.html'> Visualize </a> > <span style = 'text-decoration: underline;'>Clusters</span></h1>
+    </div>
+    <!-- <hr/> -->
+    
+    <div class="row" style='padding: 15px;'>
+
+      <section class="9u">
+
+        <div class="chart">
+          <!-- <div id="kmeans" style='width: 1000px; text-align: center;'>
+          <svg></svg>
+          </div> -->
+        </div>
+
+      </section>
+
+      <section class="3u">
+        <div>
+          <label class="12u" for="team_member">Dataset:</label>
+            <select class="12u" id="team_member" name="team_member" onchange="">
+              <option value="All">All</option>
+              <option value="mem_1">Hely</option>
+              <option value="mem_2">Alex</option>
+              <option value="mem_3">Rucha</option>
+              <option value="mem_4">Cai</option>
+            </select>
+        </div>
+
+        <div>
+          <label class="12u" for="param_x">X label:</label>
+            <select class="12u" id="param_x" name="param_x" onchange="">
+              <option value="acousticness">Acousticness</option>
+              <option value="danceability">Danceability</option>
+              <option value="energy">Energy</option>
+              <option value="instrumentalness">Instrumentalness</option>
+              <option value="speechiness">Speechiness</option>
+              <option value="valence">Valence</option>
+            </select>
+        </div>
+
+        <div>
+          <label class="12u" for="param_y">Y label:</label>
+            <select class="12u" id="param_y" name="param_y" onchange="">
+              <option value="acousticness">Acousticness</option>
+              <option value="danceability">Danceability</option>
+              <option value="energy">Energy</option>
+              <option value="instrumentalness">Instrumentalness</option>
+              <option value="speechiness">Speechiness</option>
+              <option value="valence">Valence</option>
+            </select>
+        </div>
+        
+
+                <!--   <section class="3u 6u(medium) 12u$(small)">
+                    <select id="audio_property" name="property">
+                    <option value="valence">Valence</option>
+                    <option value="energy">Energy</option>
+                    <option value="danceability">Danceability</option>
+                    <option value="speechiness">Liveness</option>
+                    <option value="tempo">Tempo</option>
+                  </select> -->
+                  <!-- </section> --> 
+
+                    <!-- <button class="button special small" id="reset" style="width:auto">Reset</button>
+                    <button class="button special small" id="restart" style="width:auto">Restart</button> -->
+
+          <div>
+            <label class="12u" for="K">Number of cluster:</label>
+            <input class="12u" type="number" id="K" min="2" max="50" value="5">            
+          </div>
+          
+          <div>
+            <br/>
+            <button class="12u button special small" id="load" onclick="renderKmeans(team_member.value, K.value, param_x.value, param_y.value);" style="">Set Parameters</button>
+          </div>
+          <div>  
+            <br/>
+            <button class="12u button special small" id="run" style="">Generate!</button>
+          </div>
+          
+
+
+        </section>
+      </div>
+    
+
+<script>
+
+  function renderKmeans(mem_id, K, param_x, param_y){
+  console.log(mem_id);
+
+  // var csv_datapath = "http://35.229.64.212/data/"
+
+  // if(mem_id == 'All') {
+  //   csv_datafile = 'Combined_data.csv';
+  // }
+  // else if(mem_id = 'mem_1') {
+  //   csv_datafile = 'Hely_data.csv';
+  // }
+  // else if(mem_id = 'mem_2') {
+  //   csv_datafile = 'Alex_data.csv';
+  // }
+  // else if(mem_id = 'mem_3') {
+  //   csv_datafile = 'Rucha_data.csv';
+  // }
+  // else if(mem_id = 'mem_4') {
+  //   csv_datafile = 'Cai_data.csv';
+  // }
+  // d3.csv(csv_datapath + csv_datafile, function(d) {
+
+  d3.csv('http://35.229.64.212/data/Combined_data.csv', function(data) {
+
+    d3.selectAll("circle").remove();
+    d3.selectAll("title").remove();
+    // d3.selectAll("label").remove();
+    // d3.selectAll(".label").remove();
+    
+    // console.log(d3.svg.symbol().type('cross'))
+
+    console.log('Listing centers:', d3.selectAll("path"));
+    d3.selectAll("path").remove();
+
+     d3.selectAll("svg").remove();
+
+
+    var d = data.filter(function(d) {
+    if(mem_id=="All"){
+      return data;
+    }
+    else {
+      return d.team_member_id == mem_id;
+    }
+});
+
+    var flag = false;
+    // var WIDTH = d3.select("#kmeans")[0][0].offsetWidth - 10;
+    // var HEIGHT = Math.max(300, WIDTH * .5);
+
+
+    var HEIGHT = 450;
+    var WIDTH = 600;
+
+
+    var height = 450;
+    var width = 600;
+    var margin = 40;
+
+
+    // var labelX = 'Danceability';
+    // var labelY = 'Energy';
+
+    var labelX = param_x;
+    var labelY = param_y;
+
+
+    // var svg = d3.select("#kmeans svg")
+
+
+    var svg = d3.select(".chart")
+      .append('svg')
+      .attr('class', 'chart')
+      // .attr('width', WIDTH)
+      // .attr('height', HEIGHT)
+      .attr('class', 'chart')
+      .attr("width", width + margin + margin)
+      .attr("height", height + margin + margin)
+      .append("g")
+      .attr("transform", "translate(" + margin + "," + margin + ")")              
+      .style('padding', '10px')
+      // .style('background', '#FEFEFE')
+      // .style('cursor', 'pointer')
+      // .style('-webkit-user-select', 'none')
+      // .style('-khtml-user-select', 'none')
+      // .style('-moz-user-select', 'none')
+      // .style('-ms-user-select', 'none')
+      // .style('user-select', 'none')
+      .on('click', function() {
+        d3.event.preventDefault();
+        // step();
+        startRun();
+      });
+
+var x = d3.scale.linear()
+                      // .domain([d3.min(d, function (d) { return d.danceability; }), d3.max(d, function (d) { return d.danceability; })])
+                      .domain([0,1])
+                      .range([0, WIDTH]);
+
+var y = d3.scale.linear()
+                      // .domain([d3.min(d, function (d) { return d.energy; }), d3.max(d, function (d) { return d.energy; })])
+                      .domain([0,1])
+                      .range([HEIGHT, 0]);
+
+
+var scale = d3.scale.sqrt()
+                      .domain([d3.min(data, function (d) { return d.popularity; }), d3.max(data, function (d) { return d.popularity; })])
+                      .range([2, 10]);
+
+var opacity = d3.scale.sqrt()
+                      .domain([d3.min(data, function (d) { return d.popularity; }), d3.max(data, function (d) { return d.popularity; })])
+                      .range([.2, 1]);
+
+
+var color = d3.scale.category10();
+
+var xAxis = d3.svg.axis().scale(x);
+// var yAxis = d3.svg.axis().scale(y).orient("left");
+var yAxis = d3.svg.axis().scale(y).orient('left');
+ 
+  svg.append("g")
+                  .attr("class", "y axis")
+                  .call(yAxis)
+                  .append("text")
+                    .attr("transform", "rotate(-90)")
+                    .attr("x", 0)
+                    .attr("y", -margin)
+                    // .attr("y", 10)
+                    .attr("dy", ".71em")
+                    .style("text-anchor", "end")
+                    .text(labelY);
+  // x axis and label
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+      .append("text")
+          .attr("x", WIDTH + 20)
+          .attr("y", margin - 10)
+          .attr("dy", ".71em")
+          .style("text-anchor", "end")
+          .text(labelX);
+
+
+    // d3.selectAll("#kmeans button")
+    //   .style('padding', '.5em .8em');
+
+    // d3.selectAll("#kmeans label")
+    //   .style('display', 'inline-block')
+    //   .style('width', '15em');
+
+
+    var lineg = svg.append('g');
+    var dotg = svg.append('g');
+    var centerg = svg.append('g');
+    d3.select("#step")
+      .on('click', function() { step(); draw(); });
+    d3.select("#restart")
+      .on('click', function() { restart(); draw(); });
+    d3.select("#reset")
+      .on('click', function() { init(); draw(); });
+
+    d3.select("#run")
+      .on('click', function() { startRun(); });
+
+    var groups = [], dots = [];
+
+    var runs = 0;
+
+    // add the tooltip area to the webpage
+    var tooltip = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
+
+    // var K;
+    function startRun() {
+
+        // $("#run").prop("disabled", true);
+        // $("#step").prop("disabled", true);
+        
+        console.log("In StartRun");
+        // reset();
+        K = parseInt(d3.select('#K')[0][0].value, 10);
+
+        if(runs < 25) {
+          step();
+          
+          inter = setInterval(step, 0);
+        }
+          runs = runs + 1;
+          console.log(runs);
+        
+        
+    }
+
+    function step() {
+    	// console.log('In STEP');
+      d3.select("#restart").attr("disabled", null);
+      
+      if(runs < 25) {
+
+        if (flag) {
+          moveCenter();
+          draw();
+        } else {
+          updateGroups();
+          draw();
+        }
+        flag = !flag;
+  
+      }
+      
+      runs = runs + 1;
+      // console.log(runs);
+
+    }
+
+    function init() {
+    		// console.log('In INIT');
+      d3.select("#restart").attr("disabled", "disabled");
+
+      //var N = parseInt(d3.select('#N')[0][0].value, 10);
+     //var K = parseInt(d3.select('#K')[0][0].value, 10);
+     // var N = 100;
+     var N = d.length;
+     console.log(N);
+     // var K = 5;
+     K = parseInt(d3.select('#K')[0][0].value, 10);
+     groups = []; 
+     dots = [];
+
+     		// data = d;
+
+    	  for (var i = 0; i < K; i++) {
+    	    var g = {
+    	      dots: [],
+    	      color: 'hsl(' + (i * 360 / K) + ',75%,50%)',
+    	      center: {
+    	        x: Math.random() * WIDTH,
+    	        y: Math.random() * HEIGHT
+    	      },
+    	      init: {
+    	        center: {}
+    	      }
+    	    };
+    	    g.init.center = {
+    	      x: g.center.x,
+    	      y: g.center.y
+    	    };
+    	    groups.push(g);
+    	  }
+
+    	  
+    	  flag = false;
+    	  // for (i = 0; i < N; i++) {
+    	  //   var dot ={
+    	  //     x: Math.random() * WIDTH,
+    	  //     y: Math.random() * HEIGHT,
+    	  //     group: undefined
+    	  //   };
+    	  //   dot.init = {
+    	  //     x: dot.x,
+    	  //     y: dot.y,
+    	  //     group: dot.group
+    	  //   };
+    	  //   dots.push(dot);
+    	  // }
+
+    	  d.forEach(function(a){
+    	  	var dot = {
+    	  		// x: a['danceability']* WIDTH,
+    	  		// y: a['energy']* HEIGHT,
+            x: a[param_x]* WIDTH,
+            y: a[param_y]* HEIGHT,
+    	  		group: undefined,
+            name : a['name'],
+            popularity: a['popularity'],
+
+    	  	};
+
+    	  	dot.init = {
+    	      x: dot.x,
+    	      y: dot.y,
+    	      group: dot.group
+    	    };
+    	    dots.push(dot);
+    	});
+
+
+    }
+
+    function restart() {
+    		console.log('In Restart');
+      flag = false;
+      d3.select("#restart").attr("disabled", "disabled");
+
+      groups.forEach(function(g) {
+        g.dots = [];
+        g.center.x = g.init.center.x;
+        g.center.y = g.init.center.y;
+      });
+
+      for (var i = 0; i < dots.length; i++) {
+        var dot = dots[i];
+        dots[i] = {
+          x: dot.init.x,
+          y: dot.init.y,
+          group: undefined,
+          init: dot.init
+        };
+      }
+    }
+
+
+    function draw() {
+    		// console.log('In draw');
+      var circles = dotg.selectAll('circle')
+        .data(dots);
+      circles.enter()
+        .append('circle');
+      circles.exit().remove();
+      circles
+        .transition()
+        .duration(500)
+        .attr('cx', function(d) { return d.x; })
+        .attr('cy', function(d) { return d.y; })
+        .attr('fill', function(d) { return d.group ? d.group.color : '#DDDDDD'; })
+        .attr("opacity", function (d) { return opacity(d.popularity); })
+        .attr("r", function (d) { return scale(d.popularity); })
+        // .attr('r', 10)
+        ;
+      
+      svg.selectAll("circles")
+      .data(dots);
+
+      circles  
+      .on("mouseover", function(d) {
+          console.log('On mouse over', d.name)
+          tooltip.transition()
+               .duration(200)
+               .style("opacity",1)
+               .style("color","black");
+          tooltip.html(d.name + '<br/>Popularity: ' + d.popularity)
+               .style("left", (d3.event.pageX + 5) + "px")
+               .style("top", (d3.event.pageY - 28) + "px");;
+      })
+      .on("mouseout", function(d) {
+          tooltip.transition()
+               .duration(500)
+               .style("opacity", 0);
+      });                        
+
+      if (dots[0].group) {
+        var l = lineg.selectAll('line')
+          .data(dots);
+        var updateLine = function(lines) {
+          lines
+            .attr('x1', function(d) { return d.x; })
+            .attr('y1', function(d) { return d.y; })
+            .attr('x2', function(d) { return d.group.center.x; })
+            .attr('y2', function(d) { return d.group.center.y; })
+            // .attr('stroke', function(d) { return d.group.color; }) // Hide stroke
+            ;
+        };
+        updateLine(l.enter().append('line'));
+        // updateLine(l.transition().duration(100));
+        l.exit().remove();
+      } else {
+        lineg.selectAll('line').remove();
+      }
+
+      var c = centerg.selectAll('path')
+        .data(groups);
+      var updateCenters = function(centers) {
+        centers
+          .attr('transform', function(d) { return "translate(" + d.center.x + "," + d.center.y + ") rotate(45)";})
+          .attr('fill', function(d,i) { return d.color; })
+          .attr('stroke', '#aabbcc');
+      };
+      c.exit().remove();
+      updateCenters(c.enter()
+        .append('path')
+        // .attr('d', d3.svg.symbol().type('cross'))
+        // .attr('stroke', '#aabbcc')
+        );
+      updateCenters(c
+        // .transition()
+        // .duration(100)
+        );}
+
+    function moveCenter() {
+      groups.forEach(function(group, i) {
+        if (group.dots.length == 0) return;
+
+        // get center of gravity
+        var x = 0, y = 0;
+        group.dots.forEach(function(dot) {
+          x += dot.x;
+          y += dot.y;
+        });
+
+        group.center = {
+          x: x / group.dots.length,
+          y: y / group.dots.length
+        };
+      });
+      
+    }
+
+    function updateGroups() {
+      groups.forEach(function(g) { g.dots = []; });
+      dots.forEach(function(dot) {
+        // find the nearest group
+        var min = Infinity;
+        var group;
+        groups.forEach(function(g) {
+          var d = Math.pow(g.center.x - dot.x, 2) + Math.pow(g.center.y - dot.y, 2);
+          if (d < min) {
+            min = d;
+            group = g;
+          }
+        });
+
+        // update group
+        group.dots.push(dot);
+        dot.group = group;
+      });
+    }
+
+    init(); draw();
+
+    	}); //d3.csv read closed
+
+}
+renderKmeans('All', 3, 'acousticness', 'acousticness');
+
+</script>
+</body>
+</html>
