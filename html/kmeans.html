@@ -45,10 +45,13 @@
 
     .tooltip {
   position: absolute;
-  width: 200px;
-  height: 28px;
+  /*width: 200px;*/
+  /*height: 28px;*/
+  padding: 3px;
   pointer-events: none;
   font: 10px sans-serif;
+  border: 1px black solid;
+  background-color: #FFFFFF;
 }
 
     </style>
@@ -94,10 +97,10 @@
           <label class="12u" for="team_member">Dataset:</label>
             <select class="12u" id="team_member" name="team_member" onchange="">
               <option value="All">All</option>
-              <option value="mem_1">Hely</option>
-              <option value="mem_2">Alex</option>
-              <option value="mem_3">Rucha</option>
-              <option value="mem_4">Cai</option>
+              <option value="mem_1">Member 1</option>
+              <option value="mem_2">Member 2</option>
+              <option value="mem_3">Member 3</option>
+              <option value="mem_4">Member 4</option>
             </select>
         </div>
 
@@ -208,16 +211,11 @@
 });
 
     var flag = false;
-    // var WIDTH = d3.select("#kmeans")[0][0].offsetWidth - 10;
-    // var HEIGHT = Math.max(300, WIDTH * .5);
+    // var width = d3.select("#kmeans")[0][0].offsetWidth - 10;
+    // var height = Math.max(300, width * .5);
 
-
-    var HEIGHT = 450;
-    var WIDTH = 600;
-
-
-    var height = 450;
-    var width = 600;
+    var height = 600;
+    var width = 900;
     var margin = 40;
 
 
@@ -227,15 +225,28 @@
     var labelX = param_x;
     var labelY = param_y;
 
+    var mem_name = 'All'; 
 
+    if (mem_id == 'mem_1') {
+      mem_name = 'Member 1';
+    }
+    else if (mem_id == 'mem_2') {
+      mem_name = 'Member 2' ; 
+    }
+    else if (mem_id == 'mem_3') {
+      mem_name = 'Member 3' ; 
+    }
+    else if (mem_id == 'mem_4') {
+      mem_name = 'Member 4' ; 
+    }
     // var svg = d3.select("#kmeans svg")
 
 
     var svg = d3.select(".chart")
       .append('svg')
       .attr('class', 'chart')
-      // .attr('width', WIDTH)
-      // .attr('height', HEIGHT)
+      // .attr('width', width)
+      // .attr('height', height)
       .attr('class', 'chart')
       .attr("width", width + margin + margin)
       .attr("height", height + margin + margin)
@@ -258,12 +269,12 @@
 var x = d3.scale.linear()
                       // .domain([d3.min(d, function (d) { return d.danceability; }), d3.max(d, function (d) { return d.danceability; })])
                       .domain([0,1])
-                      .range([0, WIDTH]);
+                      .range([0, width]);
 
 var y = d3.scale.linear()
                       // .domain([d3.min(d, function (d) { return d.energy; }), d3.max(d, function (d) { return d.energy; })])
                       .domain([0,1])
-                      .range([HEIGHT, 0]);
+                      .range([height, 0]);
 
 
 var scale = d3.scale.sqrt()
@@ -291,18 +302,27 @@ var yAxis = d3.svg.axis().scale(y).orient('left');
                     // .attr("y", 10)
                     .attr("dy", ".71em")
                     .style("text-anchor", "end")
-                    .text(labelY);
+                    .text(labelY.charAt(0).toUpperCase() + labelY.slice(1));
   // x axis and label
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis)
       .append("text")
-          .attr("x", WIDTH + 20)
+          .attr("x", width + 20)
           .attr("y", margin - 10)
           .attr("dy", ".71em")
           .style("text-anchor", "end")
-          .text(labelX);
+          .text(labelX.charAt(0).toUpperCase() + labelX.slice(1));
+
+  svg.append("text")
+      .attr("class","title")
+      .attr("x", (width / 2))
+      .attr("y", 0 - (margin / 2))
+      .attr("text-anchor", "middle")
+      .style("font-size", "16px")
+      .style("text-decoration", "underline")
+      .text(mem_name + ': ' + labelX.charAt(0).toUpperCase() + labelX.slice(1)  + ' vs ' + labelY.charAt(0).toUpperCase() + labelY.slice(1));
 
 
     // d3.selectAll("#kmeans button")
@@ -400,8 +420,8 @@ var yAxis = d3.svg.axis().scale(y).orient('left');
     	      dots: [],
     	      color: 'hsl(' + (i * 360 / K) + ',75%,50%)',
     	      center: {
-    	        x: Math.random() * WIDTH,
-    	        y: Math.random() * HEIGHT
+    	        x: Math.random() * width,
+    	        y: Math.random() * height
     	      },
     	      init: {
     	        center: {}
@@ -418,8 +438,8 @@ var yAxis = d3.svg.axis().scale(y).orient('left');
     	  flag = false;
     	  // for (i = 0; i < N; i++) {
     	  //   var dot ={
-    	  //     x: Math.random() * WIDTH,
-    	  //     y: Math.random() * HEIGHT,
+    	  //     x: Math.random() * width,
+    	  //     y: Math.random() * height,
     	  //     group: undefined
     	  //   };
     	  //   dot.init = {
@@ -432,10 +452,10 @@ var yAxis = d3.svg.axis().scale(y).orient('left');
 
     	  d.forEach(function(a){
     	  	var dot = {
-    	  		// x: a['danceability']* WIDTH,
-    	  		// y: a['energy']* HEIGHT,
-            x: a[param_x]* WIDTH,
-            y: a[param_y]* HEIGHT,
+    	  		// x: a['danceability']* width,
+    	  		// y: a['energy']* height,
+            x: a[param_x]* width,
+            y: a[param_y]* height,
     	  		group: undefined,
             name : a['name'],
             popularity: a['popularity'],
@@ -489,7 +509,7 @@ var yAxis = d3.svg.axis().scale(y).orient('left');
         .attr('cx', function(d) { return d.x; })
         .attr('cy', function(d) { return d.y; })
         .attr('fill', function(d) { return d.group ? d.group.color : '#DDDDDD'; })
-        .attr("opacity", function (d) { return opacity(d.popularity); })
+        // .attr("opacity", function (d) { return opacity(d.popularity); })
         .attr("r", function (d) { return scale(d.popularity); })
         // .attr('r', 10)
         ;
@@ -504,7 +524,7 @@ var yAxis = d3.svg.axis().scale(y).orient('left');
                .duration(200)
                .style("opacity",1)
                .style("color","black");
-          tooltip.html(d.name + '<br/>Popularity: ' + d.popularity)
+          tooltip.html('<strong>' + d.name + '</strong>'+ '<br/>Popularity: ' + d.popularity)
                .style("left", (d3.event.pageX + 5) + "px")
                .style("top", (d3.event.pageY - 28) + "px");;
       })
