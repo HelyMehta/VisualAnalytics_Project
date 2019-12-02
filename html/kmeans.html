@@ -84,8 +84,8 @@
     <!-- <hr/> -->
     
     <div class="row" style='padding: 15px;'>
-
-      <section class="9u">
+      
+      <section class="8u">
 
         <div class="chart">
           <!-- <div id="kmeans" style='width: 1000px; text-align: center;'>
@@ -95,21 +95,31 @@
 
       </section>
 
-      <section class="3u">
-        <div>
-          <label class="12u" for="team_member">Dataset:</label>
-            <select class="12u" id="team_member" name="team_member" onchange="">
-              <option value="All">All</option>
-              <option value="mem_1">Member 1</option>
-              <option value="mem_2">Member 2</option>
-              <option value="mem_3">Member 3</option>
-              <option value="mem_4">Member 4</option>
+      <section class="4u" style="padding: 5px;">
+        <h3>Select Parameters</h3>
+        <div  class="row"  style="padding: 5px;">
+          <section class="4u">
+            <!-- <label for="team_member">Dataset: </label>  -->
+            Dataset:
+          </section>
+          <section class="8u">
+            <select id="team_member" name="team_member" onchange="">
+                <option value="All">All</option>
+                <option value="mem_1">Member 1</option>
+                <option value="mem_2">Member 2</option>
+                <option value="mem_3">Member 3</option>
+                <option value="mem_4">Member 4</option>
             </select>
+          </section>
         </div>
 
-        <div>
-          <label class="12u" for="param_x">X label:</label>
-            <select class="12u" id="param_x" name="param_x" onchange="">
+        <div class = "row" style="padding: 5px;">
+          <section class="4u" >
+            <!-- <label for="param_x">X label:</label> -->
+            X Label:
+          </section>
+          <section class="8u">
+            <select id="param_x" name="param_x" onchange="">
               <option value="acousticness">Acousticness</option>
               <option value="danceability">Danceability</option>
               <option value="energy">Energy</option>
@@ -117,11 +127,16 @@
               <option value="speechiness">Speechiness</option>
               <option value="valence">Valence</option>
             </select>
+          </section> 
         </div>
 
-        <div>
-          <label class="12u" for="param_y">Y label:</label>
-            <select class="12u" id="param_y" name="param_y" onchange="">
+        <div class = "row" style="padding: 5px;">
+          <section class="4u" >
+            <!-- <label for="param_y">Y label:</label>   -->
+            Y Label: 
+          </section>
+          <section class="8u">
+            <select id="param_y" name="param_y" onchange="">
               <option value="acousticness">Acousticness</option>
               <option value="danceability"  selected="selected">Danceability</option>
               <option value="energy">Energy</option>
@@ -129,40 +144,33 @@
               <option value="speechiness">Speechiness</option>
               <option value="valence">Valence</option>
             </select>
+          </section>
         </div>
         
-
-                <!--   <section class="3u 6u(medium) 12u$(small)">
-                    <select id="audio_property" name="property">
-                    <option value="valence">Valence</option>
-                    <option value="energy">Energy</option>
-                    <option value="danceability">Danceability</option>
-                    <option value="speechiness">Liveness</option>
-                    <option value="tempo">Tempo</option>
-                  </select> -->
-                  <!-- </section> --> 
-
-                    <!-- <button class="button special small" id="reset" style="width:auto">Reset</button>
-                    <button class="button special small" id="restart" style="width:auto">Restart</button> -->
-
-          <div>
-            <label class="12u" for="K">Number of clusters:</label>
-            <input class="12u" type="number" id="K" min="2" max="50" value="3">            
-          </div>
+        <div class = "row" style="padding: 5px;">
+          <section class="4u" >
+            <!-- <label for="K">Clusters:</label> -->
+            Clusters: 
+          </section>
+          <section class="8u">
+            <input class="12u" type="number" id="K" min="2" max="50" value="3">
+          </section>
+            
+                        
+        </div>
           
-          <div>
-            <br/>
+          <div class= "row" style="padding: 5px;">
             <button class="12u button small" id="load" onclick="renderKmeans(team_member.value, K.value, param_x.value, param_y.value);" style="">Set Parameters</button>
           </div>
-          <div>  
-            <br/>
+          <div class = "row" style="padding: 5px;">
             <button class="12u button special small" id="run" style="">Generate!</button>
           </div>
           
 
 
         </section>
-      </div>
+    
+    </div>
     
 
 <script>
