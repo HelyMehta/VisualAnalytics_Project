@@ -29,11 +29,13 @@
         }
 
     .chart text {
-        font: 12px sans-serif;
+        /*font: 12px sans-serif;*/
+        font-size: 12px;
     }
 
     .chart .title {
-        font: 15px sans-serif;
+        /*font: 15px sans-serif;*/
+        font-size: 15px;
     }
 
     .axis path,
@@ -49,7 +51,8 @@
   /*height: 28px;*/
   padding: 3px;
   pointer-events: none;
-  font: 10px sans-serif;
+  /*font: 10px sans-serif;*/
+  font-size: 10px;
   border: 1px black solid;
   background-color: #FFFFFF;
 }
@@ -120,7 +123,7 @@
           <label class="12u" for="param_y">Y label:</label>
             <select class="12u" id="param_y" name="param_y" onchange="">
               <option value="acousticness">Acousticness</option>
-              <option value="danceability">Danceability</option>
+              <option value="danceability"  selected="selected">Danceability</option>
               <option value="energy">Energy</option>
               <option value="instrumentalness">Instrumentalness</option>
               <option value="speechiness">Speechiness</option>
@@ -144,7 +147,7 @@
 
           <div>
             <label class="12u" for="K">Number of clusters:</label>
-            <input class="12u" type="number" id="K" min="2" max="50" value="5">            
+            <input class="12u" type="number" id="K" min="2" max="50" value="3">            
           </div>
           
           <div>
@@ -454,8 +457,10 @@ var yAxis = d3.svg.axis().scale(y).orient('left');
     	  	var dot = {
     	  		// x: a['danceability']* width,
     	  		// y: a['energy']* height,
+            val_x: a[param_x],
+            val_y: a[param_y],
             x: a[param_x]* width,
-            y: a[param_y]* height,
+            y: (1- a[param_y] ) * height,
     	  		group: undefined,
             name : a['name'],
             popularity: a['popularity'],
@@ -524,7 +529,7 @@ var yAxis = d3.svg.axis().scale(y).orient('left');
                .duration(200)
                .style("opacity",1)
                .style("color","black");
-          tooltip.html('<strong>' + d.name + '</strong>'+ '<br/>Popularity: ' + d.popularity)
+          tooltip.html('<strong>' + d.name + '</strong>'+ '<br/>Popularity: ' + d.popularity + '<br/>' + labelX.charAt(0).toUpperCase() + labelX.slice(1) + ': ' + d.val_x + ', ' + labelY.charAt(0).toUpperCase() + labelY.slice(1) + ': ' + d.val_y)
                .style("left", (d3.event.pageX + 5) + "px")
                .style("top", (d3.event.pageY - 28) + "px");;
       })
@@ -616,7 +621,7 @@ var yAxis = d3.svg.axis().scale(y).orient('left');
     	}); //d3.csv read closed
 
 }
-renderKmeans('All', 3, 'acousticness', 'acousticness');
+renderKmeans('All', 3, 'acousticness', 'danceability');
 
 </script>
 </body>
