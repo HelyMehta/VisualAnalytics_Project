@@ -29,11 +29,13 @@
         }
 
     .chart text {
-        font: 12px sans-serif;
+        /*font: 12px sans-serif;*/
+        font-size: 12px;
     }
 
     .chart .title {
-        font: 15px sans-serif;
+        /*font: 15px sans-serif;*/
+        font-size: 15px;
     }
 
     .axis path,
@@ -49,7 +51,8 @@
   /*height: 28px;*/
   padding: 3px;
   pointer-events: none;
-  font: 10px sans-serif;
+  /*font: 10px sans-serif;*/
+  font-size: 10px;
   border: 1px black solid;
   background-color: #FFFFFF;
 }
@@ -81,8 +84,8 @@
     <!-- <hr/> -->
 
     <div class="row" style='padding: 15px;'>
-
-      <section class="9u">
+      
+      <section class="8u">
 
         <div class="chart">
           <!-- <div id="kmeans" style='width: 1000px; text-align: center;'>
@@ -92,21 +95,31 @@
 
       </section>
 
-      <section class="3u">
-        <div>
-          <label class="12u" for="team_member">Dataset:</label>
-            <select class="12u" id="team_member" name="team_member" onchange="">
-              <option value="All">All</option>
-              <option value="mem_1">Member 1</option>
-              <option value="mem_2">Member 2</option>
-              <option value="mem_3">Member 3</option>
-              <option value="mem_4">Member 4</option>
+      <section class="4u" style="padding: 5px;">
+        <h3>Select Parameters</h3>
+        <div  class="row"  style="padding: 5px;">
+          <section class="4u">
+            <!-- <label for="team_member">Dataset: </label>  -->
+            Dataset:
+          </section>
+          <section class="8u">
+            <select id="team_member" name="team_member" onchange="">
+                <option value="All">All</option>
+                <option value="mem_1">Member 1</option>
+                <option value="mem_2">Member 2</option>
+                <option value="mem_3">Member 3</option>
+                <option value="mem_4">Member 4</option>
             </select>
+          </section>
         </div>
 
-        <div>
-          <label class="12u" for="param_x">X label:</label>
-            <select class="12u" id="param_x" name="param_x" onchange="">
+        <div class = "row" style="padding: 5px;">
+          <section class="4u" >
+            <!-- <label for="param_x">X label:</label> -->
+            X Label:
+          </section>
+          <section class="8u">
+            <select id="param_x" name="param_x" onchange="">
               <option value="acousticness">Acousticness</option>
               <option value="danceability">Danceability</option>
               <option value="energy">Energy</option>
@@ -114,19 +127,26 @@
               <option value="speechiness">Speechiness</option>
               <option value="valence">Valence</option>
             </select>
+          </section> 
         </div>
 
-        <div>
-          <label class="12u" for="param_y">Y label:</label>
-            <select class="12u" id="param_y" name="param_y" onchange="">
+        <div class = "row" style="padding: 5px;">
+          <section class="4u" >
+            <!-- <label for="param_y">Y label:</label>   -->
+            Y Label: 
+          </section>
+          <section class="8u">
+            <select id="param_y" name="param_y" onchange="">
               <option value="acousticness">Acousticness</option>
-              <option value="danceability">Danceability</option>
+              <option value="danceability"  selected="selected">Danceability</option>
               <option value="energy">Energy</option>
               <option value="instrumentalness">Instrumentalness</option>
               <option value="speechiness">Speechiness</option>
               <option value="valence">Valence</option>
             </select>
+          </section>
         </div>
+<<<<<<< HEAD
 
 
                 <!--   <section class="3u 6u(medium) 12u$(small)">
@@ -153,14 +173,39 @@
           </div>
           <div>
             <br/>
+=======
+        
+        <div class = "row" style="padding: 5px;">
+          <section class="4u" >
+            <!-- <label for="K">Clusters:</label> -->
+            Clusters: 
+          </section>
+          <section class="8u">
+            <input class="12u" type="number" id="K" min="2" max="50" value="3">
+          </section>
+            
+                        
+        </div>
+          
+          <div class= "row" style="padding: 5px;">
+            <button class="12u button small" id="load" onclick="renderKmeans(team_member.value, K.value, param_x.value, param_y.value);" style="">Set Parameters</button>
+          </div>
+          <div class = "row" style="padding: 5px;">
+>>>>>>> 431a727431b64c661d36d73ed4bae8a0e9fd590b
             <button class="12u button special small" id="run" style="">Generate!</button>
           </div>
 
 
 
         </section>
+<<<<<<< HEAD
       </div>
 
+=======
+    
+    </div>
+    
+>>>>>>> 431a727431b64c661d36d73ed4bae8a0e9fd590b
 
 <script>
 
@@ -454,8 +499,10 @@ var yAxis = d3.svg.axis().scale(y).orient('left');
     	  	var dot = {
     	  		// x: a['danceability']* width,
     	  		// y: a['energy']* height,
+            val_x: a[param_x],
+            val_y: a[param_y],
             x: a[param_x]* width,
-            y: a[param_y]* height,
+            y: (1- a[param_y] ) * height,
     	  		group: undefined,
             name : a['name'],
             popularity: a['popularity'],
@@ -524,7 +571,7 @@ var yAxis = d3.svg.axis().scale(y).orient('left');
                .duration(200)
                .style("opacity",1)
                .style("color","black");
-          tooltip.html('<strong>' + d.name + '</strong>'+ '<br/>Popularity: ' + d.popularity)
+          tooltip.html('<strong>' + d.name + '</strong>'+ '<br/>Popularity: ' + d.popularity + '<br/>' + labelX.charAt(0).toUpperCase() + labelX.slice(1) + ': ' + d.val_x + ', ' + labelY.charAt(0).toUpperCase() + labelY.slice(1) + ': ' + d.val_y)
                .style("left", (d3.event.pageX + 5) + "px")
                .style("top", (d3.event.pageY - 28) + "px");;
       })
@@ -616,7 +663,7 @@ var yAxis = d3.svg.axis().scale(y).orient('left');
     	}); //d3.csv read closed
 
 }
-renderKmeans('All', 3, 'acousticness', 'acousticness');
+renderKmeans('All', 3, 'acousticness', 'danceability');
 
 </script>
 </body>
