@@ -39,6 +39,8 @@
         <option value="danceability">danceability</option>
         <option value="energy">energy</option>
         <option value="valence">valence</option>
+        <option value="speechiness">speechiness</option>
+        <option value="acousticness">acousticness</option>
     </select>
 </p>
 
@@ -48,6 +50,8 @@
 <div id="my_dataviz"></div>
 </body>
 <script>
+    // https://towardsdatascience.com/is-my-spotify-music-boring-an-analysis-involving-music-data-and-machine-learning-47550ae931de
+    // Trait meanings
 
     // set the dimensions and margins of the graph
     var margin = {top: 10, right: 30, bottom: 30, left: 40},
@@ -194,7 +198,78 @@
                 console.log(sumstat);
             }
 
-            //@Hely Everything below here needs to be removed each time a new trait is picked from the drop down menu
+            if(trait=="speechiness") {
+
+                var sumstat = d3.nest() // nest function allows to group the calculation per level of a factor
+                    .key(function (d) {
+                        return d.team_member_id;
+                    })
+                    .rollup(function (d) {
+                        q1 = d3.quantile(d.map(function (g) {
+                            return g.speechiness;
+                        }).sort(d3.ascending), .25)
+                        median = d3.quantile(d.map(function (g) {
+                            return g.speechiness;
+                        }).sort(d3.ascending), .5)
+                        q3 = d3.quantile(d.map(function (g) {
+                            return g.speechiness;
+                        }).sort(d3.ascending), .75)
+                        interQuantileRange = q3 - q1
+                        min = d3.min(d.map(function (g) {
+                            return g.speechiness;
+                        }))
+                        max = d3.max(d.map(function (g) {
+                            return g.speechiness;
+                        }))
+                        return ({
+                            q1: q1,
+                            median: median,
+                            q3: q3,
+                            interQuantileRange: interQuantileRange,
+                            min: min,
+                            max: max
+                        })
+                    })
+                    .entries(data)
+
+                console.log(sumstat);
+            }
+            if(trait=="acousticness") {
+
+                var sumstat = d3.nest() // nest function allows to group the calculation per level of a factor
+                    .key(function (d) {
+                        return d.team_member_id;
+                    })
+                    .rollup(function (d) {
+                        q1 = d3.quantile(d.map(function (g) {
+                            return g.acousticness;
+                        }).sort(d3.ascending), .25)
+                        median = d3.quantile(d.map(function (g) {
+                            return g.acousticness;
+                        }).sort(d3.ascending), .5)
+                        q3 = d3.quantile(d.map(function (g) {
+                            return g.acousticness;
+                        }).sort(d3.ascending), .75)
+                        interQuantileRange = q3 - q1
+                        min = d3.min(d.map(function (g) {
+                            return g.acousticness;
+                        }))
+                        max = d3.max(d.map(function (g) {
+                            return g.acousticness;
+                        }))
+                        return ({
+                            q1: q1,
+                            median: median,
+                            q3: q3,
+                            interQuantileRange: interQuantileRange,
+                            min: min,
+                            max: max
+                        })
+                    })
+                    .entries(data)
+
+                console.log(sumstat);
+            }
 
             // Show the main vertical line
             var vLine = svg
@@ -242,7 +317,7 @@
                 })
                 .attr("width", boxWidth)
                 .attr("stroke", "black").attr("class", "box")
-                .style("fill", "lightblue"); // why wont this work?
+                .style("fill", "#6cc091"); // why wont this work?
 
             // Show the median
             var mLine = svg
