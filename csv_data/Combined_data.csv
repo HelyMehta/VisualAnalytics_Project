@@ -399,3 +399,103 @@ Sr_no,id,name_org,name,popularity,danceability,energy,key,loudness,mode,speechin
 398,2f6uFYEhlcmm2Nu9F3JqzW,Rise,Rise,44,0.408,0.579,5,-4.909,1,0.0348,0.308,0,0.104,0.373,81.363,211582,4,mem_4
 399,2pY99npaZKTVAyw2DhV9Bo,Forever My Lady,Forever My Lady,54,0.706,0.496,9,-15.138,0,0.0431,0.168,0,0.244,0.771,118.022,320360,4,mem_4
 400,2Fxmhks0bxGSBdJ92vM42m,Bad Guy,Bad Guy,96,0.701,0.425,7,-10.965,1,0.375,0.328,0.13,0.1,0.562,135.128,194088,4,mem_4
+401,21jGcNKet2qwijlDFuPiPb,Circles,Circles,100,0.695,0.762,0,-3.497,1,0.0395,0.192,0.00244,0.0863,0.553,120.042,215280,4,global
+402,6EOKwHETwSkZ9gW2b6ASE0,Ransom,Ransom,79,0.745,0.642,7,-6.257,0,0.287,0.0204,0,0.0658,0.226,179.974,131240,4,global
+403,05mDaV9Vb3wrzjF6OPZnhq,Saint-Tropez,Saint-Tropez,90,0.617,0.684,0,-3.618,1,0.0439,0.0545,0,0.104,0.295,132.113,150867,4,global
+404,6vBdBCoOhKHiYDDOcorfNo,Goodbyes (Feat. Young Thug),Goodbyes (Feat. Young Thug),74,0.58,0.653,5,-3.818,1,0.0745,0.447,0,0.111,0.175,150.231,174960,4,global
+405,3NkJNL3WqO1Lqc3uNDxvCN,Don’t Call Me Angel (Charlie’s Angels) (with Miley Cyrus & Lana Del Rey),Don’t Call Me Angel (Charlie’s Angels) (with Miley Cyrus & Lana Del Rey),88,0.643,0.721,1,-5.248,1,0.0449,0.00268,6.51E-06,0.0898,0.317,102.914,190107,4,global
+406,0Xek5rqai2jcOWCYWJfVCF,Enemies (feat. DaBaby),Enemies (feat. DaBaby),89,0.542,0.674,6,-4.169,1,0.21,0.0588,0,0.0955,0.667,76.388,196760,4,global
+407,7CZyCXKG6d5ALeq41sLzbw,Take What You Want (feat. Ozzy Osbourne & Travis Scott),Take What You Want (feat. Ozzy Osbourne & Travis Scott),92,0.499,0.8,1,-2.665,0,0.0502,0.0906,0,0.147,0.272,139.919,229573,4,global
+408,5qmq61DAAOUaW8AUo8xKhh,Truth Hurts,Truth Hurts,92,0.715,0.624,4,-3.046,0,0.114,0.11,0,0.123,0.412,158.087,173325,4,global
+409,0RiRZpuVRbi7oqRdSMwhQY,Sunflower - Spider-Man: Into the Spider-Verse,Sunflower - Spider-Man: Into the Spider-Verse,88,0.755,0.522,2,-4.368,1,0.0575,0.533,0,0.0685,0.925,89.96,157560,4,global
+410,7sWRlDoTDX8geTR8zzr2vt,Hollywood's Bleeding,Hollywood's Bleeding,89,0.405,0.646,4,-3.206,0,0.0476,0.331,0,0.103,0.17,130.218,156267,4,global
+411,6v3KW9xbzN5yKLt9YKDYA2,Senorita,Senorita,89,0.759,0.548,9,-6.049,0,0.029,0.0392,0,0.0828,0.749,116.967,190800,4,global
+412,2C6WXnmZ66tHhHlnvwePiK,Die For Me (feat. Future & Halsey),Die For Me (feat. Future & Halsey),86,0.614,0.66,0,-2.848,1,0.0441,0.19,0,0.211,0.452,145.01,245267,4,global
+413,1000nHvUdawXuUHgBod4Wv,Panini,Panini,84,0.703,0.594,5,-6.146,0,0.0752,0.342,0,0.123,0.475,153.848,114893,4,global
+414,6XHVuErjQ4XNm6nDPVCxVX,No Guidance (feat. Drake),No Guidance (feat. Drake),88,0.698,0.454,1,-6.756,0,0.151,0.123,0,0.155,0.137,92.932,260640,4,global
+415,5ry2OE6R2zPQFDO85XkgRb,Money In The Grave (Drake ft. Rick Ross),Money In The Grave (Drake ft. Rick Ross),91,0.831,0.502,10,-4.045,0,0.046,0.101,0,0.122,0.101,100.541,205427,4,global
+416,12Fkyg9lpmaz2zmKOfw2Y2,On The Road (feat. Meek Mill & Lil Baby),On The Road (feat. Meek Mill & Lil Baby),86,0.442,0.737,7,-5.046,1,0.109,0.0589,0,0.102,0.21,112.93,218320,5,global
+417,7qEHsqek33rTcFNT9PFqLf,Someone You Loved,Someone You Loved,96,0.501,0.405,1,-5.679,1,0.0319,0.751,0,0.105,0.446,109.891,182161,4,global
+418,6V9fHiv84WlVTg7CSnIVY2,Graveyard,Graveyard,92,0.667,0.583,11,-5.127,0,0.0747,0.231,4.48E-05,0.181,0.187,92.043,181806,4,global
+419,5Z8HZM6iQMhhqyPcCGY5g9,Hot (feat. Gunna),Hot (feat. Gunna),89,0.855,0.651,0,-8.044,0,0.235,0.063,0,0.0772,0.559,111.997,193027,4,global
+420,2J0NXdHr6MYvKDSxB7k3V2,A Thousand Bad Times,A Thousand Bad Times,84,0.632,0.732,6,-3.498,1,0.092,0.105,1.15E-05,0.111,0.317,159,221173,4,global
+421,3s4mrPrEFFPF0LmAfutW0n,The London (feat. J. Cole & Travis Scott),The London (feat. J. Cole & Travis Scott),83,0.784,0.517,4,-8.981,0,0.209,0.0249,1.44E-06,0.155,0.206,97.991,200187,4,global
+422,7aiClxsDWFRQ0Kzk5KI5ku,hot girl bummer,hot girl bummer,97,0.778,0.559,6,-7.109,0,0.0776,0.128,0,0.399,0.678,129.989,185093,1,global
+423,5MPPttjfGap2C6j6eKcO6J,Baby (Lil Baby feat. DaBaby),Baby (Lil Baby feat. DaBaby),81,0.97,0.463,10,-7.259,1,0.366,0.0957,0,0.151,0.46,108.003,142417,4,global
+424,4sjiIpEv617LDXaidKioOI,223's (feat. 9lokknine),223's (feat. 9lokknine),92,0.932,0.547,0,-7.787,0,0.333,0.0388,0,0.0924,0.695,94.998,176640,4,global
+425,2Fxmhks0bxGSBdJ92vM42m,bad guy,bad guy,96,0.701,0.425,7,-10.965,1,0.375,0.328,0.13,0.1,0.562,135.128,194088,4,global
+426,7xQAfvXzm3AkraOtGPWIZg,Wow.,Wow.,89,0.829,0.539,11,-7.359,0,0.208,0.136,1.78E-06,0.103,0.388,99.96,149547,4,global
+427,1ckLp8lCl8LipXI0ypX72m,I'm Gonna Be,I'm Gonna Be,82,0.746,0.559,5,-4.008,1,0.0316,0.703,0,0.148,0.368,117.943,200680,4,global
+428,4sWuPniHClkInYAnzXAYUF,Camelot,Camelot,90,0.787,0.713,7,-5.252,1,0.401,0.0849,0,0.717,0.762,175.041,148759,4,global
+429,70eFcWOvlMObDhURTqT4Fv,Beautiful People (feat. Khalid),Beautiful People (feat. Khalid),88,0.64,0.648,5,-8.113,0,0.187,0.124,0,0.0802,0.548,92.977,197867,4,global
+430,0Ryd8975WihbObpp5cPW1t,boyfriend (with Social House),boyfriend (with Social House),90,0.4,0.795,10,-3.731,0,0.461,0.119,0,0.159,0.702,190.097,186107,4,global
+431,51Fjme0JiitpyXKuyQiCDo,Lalala,Lalala,95,0.843,0.391,2,-7.899,1,0.0845,0.181,0,0.137,0.496,129.972,160627,4,global
+432,2gwkD6igEhQbDQegRCcdoB,Suge,Suge,88,0.876,0.662,2,-6.482,0,0.426,0.0608,0,0.127,0.844,75.445,163320,4,global
+433,1YscJ7yVTlFxW3eF6pv5ba,Allergic,Allergic,82,0.665,0.741,0,-3.694,1,0.0787,0.154,3.02E-05,0.345,0.57,144.968,156893,4,global
+434,5KE9b4x7Zj2A8XtbkqhqTe,Staring At The Sun (feat. SZA),Staring At The Sun (feat. SZA),82,0.724,0.772,6,-4.389,0,0.184,0.248,0,0.308,0.347,95.074,168280,4,global
+435,6b2RcmUt1g9N9mQ3CbjX2Y,How Do You Sleep?,How Do You Sleep?,96,0.477,0.682,1,-4.931,0,0.0925,0.153,0,0.0763,0.345,110.567,202205,5,global
+436,4SDgTLDYrJ2UrHbkRkg7MD,Panini - DaBaby Remix,Panini - DaBaby Remix,85,0.717,0.598,5,-5.613,0,0.0809,0.22,0,0.122,0.496,153.905,151040,4,global
+437,3Yh9lZcWyKrK9GjbhuS0hR,Good as Hell,Good as Hell,88,0.682,0.919,0,-3.18,0,0.0875,0.256,0,0.442,0.535,95.982,159736,4,global
+438,6alCTRgBPoeAFi2N4il9Q4,Did It Again,Did It Again,71,0.686,0.561,10,-9.929,0,0.191,0.185,0,0.114,0.186,148.775,116240,4,global
+439,1GeNui6m825V8jP4uKiIaH,Bad Bad Bad (feat. Lil Baby),Bad Bad Bad (feat. Lil Baby),86,0.974,0.596,6,-8.888,1,0.184,0.0976,0,0.151,0.892,111.959,149040,4,global
+440,1dGr1c8CrMLDpV6mPbImSI,Lover,Lover,89,0.359,0.543,7,-7.582,1,0.0919,0.492,1.58E-05,0.118,0.453,68.534,221307,4,global
+441,0DZJACISivjWjscIp5Kg1q,Ransom (with Juice WRLD) - Remix,Ransom (with Juice WRLD) - Remix,70,0.493,0.665,2,-6.427,0,0.366,0.0107,0,0.0762,0.385,179.982,171227,4,global
+442,4B7fTyj1FIPvP9tT5X3DnR,Behind Barz - Bonus,Behind Barz - Bonus,79,0.854,0.554,8,-4.684,1,0.172,0.769,1.84E-06,0.0749,0.272,142.069,163121,4,global
+443,6uFn47ACjqYkc0jADwEdj1,Pop Out (feat. Lil Tjay),Pop Out (feat. Lil Tjay),87,0.772,0.639,1,-7.119,1,0.467,0.15,0,0.0698,0.261,168.112,166560,4,global
+444,2zjGJ0dChMR0KxBZS15aqo,"Baguettes in the Face (feat. NAV, Playboi Carti & A Boogie Wit da Hoodie)","Baguettes in the Face (feat. NAV, Playboi Carti & A Boogie Wit da Hoodie)",85,0.883,0.525,2,-8.054,0,0.0633,0.189,0,0.0971,0.312,99.978,174100,4,global
+445,5N1o6d8zGcSZSeMFkOUQOk,Hot Girl Summer (feat. Nicki Minaj & Ty Dolla $ign),Hot Girl Summer (feat. Nicki Minaj & Ty Dolla $ign),84,0.872,0.814,0,-4.568,1,0.155,0.00485,1.96E-06,0.214,0.57,98.985,199427,4,global
+446,7LzouaWGFCy4tkXDOOnEyM,Liar,Liar,94,0.74,0.498,11,-6.684,0,0.0456,0.0169,0.00282,0.319,0.652,98.016,207039,4,global
+447,44ADyYoY5liaRa3EOAl4uf,Slide Away,Slide Away,86,0.53,0.538,5,-6.672,1,0.0335,0.17,2.83E-06,0.248,0.288,148.051,233654,4,global
+448,2cvOfKHOHgwQlLiuLKP2xR,Myself,Myself,82,0.476,0.701,0,-4.234,1,0.0349,0.102,0,0.242,0.405,163.882,158120,4,global
+449,67XyC1GdSkKb9sbRRkUDXS,Shotta Flow (Feat. Blueface) [Remix],Shotta Flow (Feat. Blueface) [Remix],84,0.894,0.511,2,-4.768,1,0.42,0.0251,0,0.14,0.568,120.08,176632,4,global
+450,1rgnBhdG2JDFTbYkYRZAku,Dance Monkey,Dance Monkey,82,0.825,0.593,6,-6.401,0,0.0988,0.688,0.000161,0.17,0.54,98.078,209755,4,global
+451,6TqXcAFInzjp0bODyvrWEq,Talk (feat. Disclosure),Talk (feat. Disclosure),85,0.901,0.4,0,-8.575,1,0.126,0.051,0,0.0599,0.346,135.984,197573,4,global
+452,0UPBidRYcgJ2mjZlk08V8x,F.N,F.N,82,0.562,0.502,6,-10.269,0,0.255,0.323,0,0.0757,0.322,120.104,224000,1,global
+453,3TLwAp3uX1nKsVxrDhNPOL,Love Me,Love Me,70,0.714,0.532,11,-6.837,0,0.271,0.675,0,0.138,0.831,204.096,117013,4,global
+454,6b2mfHMqWCA74XmUuVJm8r,I Know,I Know,80,0.666,0.603,1,-5.671,1,0.0763,0.497,0,0.112,0.262,102.94,141413,4,global
+455,0rIAC4PXANcKmitJfoqmVm,Motivation,Motivation,90,0.599,0.887,4,-3.967,1,0.0984,0.0192,1.21E-06,0.3,0.881,170.918,193837,4,global
+456,6RRNNciQGZEXnqk8SQ9yv5,You Need To Calm Down,You Need To Calm Down,88,0.771,0.671,2,-5.617,1,0.0553,0.00929,0,0.0637,0.714,85.026,171360,4,global
+457,2xE16muNCmhZwSOv3i1d1H,Mood Swings,Mood Swings,81,0.943,0.664,4,-5.952,0,0.106,0.235,5.84E-06,0.112,0.93,120.051,156893,4,global
+458,2JvzF1RMd7lE3KmFlsyZD8,MIDDLE CHILD,MIDDLE CHILD,87,0.837,0.364,8,-11.713,1,0.276,0.149,0,0.271,0.463,123.984,213594,4,global
+459,0KAzP1Rbp0Vz5pw8i1KDDI,Internet,Internet,79,0.469,0.489,0,-6.071,1,0.0314,0.841,0,0.103,0.201,74.013,123387,4,global
+460,0hVXuCcriWRGvwMV1r5Yn9,I Don't Care (with Justin Bieber),I Don't Care (with Justin Bieber),86,0.798,0.675,6,-5.041,1,0.0442,0.0912,0,0.0894,0.842,101.956,219947,4,global
+461,3RauEVgRgj1IuWdJ9fDs70,The Man,The Man,84,0.777,0.658,0,-5.191,1,0.054,0.0767,0,0.0901,0.633,110.048,190360,4,global
+462,6moU77g9RQyMzHNuKEaQKq,It's You,It's You,91,0.732,0.463,11,-6.972,0,0.0287,0.374,0,0.194,0.397,95.971,212607,4,global
+463,2IRZnDFmlqMuOrYOLnZZyc,Going Bad (feat. Drake),Going Bad (feat. Drake),86,0.889,0.496,4,-6.365,0,0.0905,0.259,0,0.252,0.544,86.003,180522,4,global
+464,2YpeDb67231RjR0MgVLzsG,Old Town Road - Remix,Old Town Road - Remix,92,0.878,0.619,6,-5.56,1,0.102,0.0533,0,0.113,0.639,136.041,157067,4,global
+465,322tcqPhma7F6hfCeLisx0,"fuck, i'm lonely (with Anne-Marie) - from “13 Reasons Why: Season 3”","fuck, i'm lonely (with Anne-Marie) - from “13 Reasons Why: Season 3”",90,0.806,0.558,9,-6.46,1,0.0683,0.482,0,0.0618,0.678,95.016,198973,4,global
+466,1wJRveJZLSb1rjhnUHQiv6,Swervin (feat. 6ix9ine),Swervin (feat. 6ix9ine),86,0.581,0.662,9,-5.239,1,0.303,0.0153,0,0.111,0.434,93.023,189487,4,global
+467,2xLMifQCjDGFmkHkpNLD9h,SICKO MODE,SICKO MODE,89,0.834,0.73,8,-3.714,1,0.222,0.00513,0,0.124,0.446,155.008,312820,4,global
+468,78QR3Wp35dqAhFEc2qAGjE,Drip Too Hard (Lil Baby & Gunna),Drip Too Hard (Lil Baby & Gunna),86,0.897,0.662,1,-6.903,0,0.292,0.0852,0,0.534,0.389,112.511,145543,4,global
+469,4a6q8CR2hzLk2plDkSxkfD,I.F.L.Y.,I.F.L.Y.,89,0.812,0.519,2,-4.823,1,0.0385,0.379,0,0.13,0.554,104.954,165714,4,global
+470,5hVghJ4KaYES3BFUATCYn0,EARFQUAKE,EARFQUAKE,85,0.554,0.498,9,-8.866,1,0.0685,0.23,5.98E-06,0.795,0.413,79.635,190067,4,global
+471,3XiNC94b4Tq1xwv70sQJGN,Sanguine Paradise,Sanguine Paradise,84,0.729,0.603,6,-6.736,0,0.0666,0.0948,0,0.113,0.207,134.972,243976,4,global
+472,2ksOAxtIxY8yElEWw8RhgK,China,China,96,0.786,0.808,7,-3.702,1,0.0882,0.0846,0.000289,0.0822,0.609,105.027,301714,4,global
+473,7eBqSVxrzQZtK2mmgRG6lC,Murder On My Mind,Murder On My Mind,86,0.759,0.73,0,-7.985,0,0.0516,0.145,3.06E-06,0.11,0.74,115.007,268434,4,global
+474,285pBltuF7vW8TeWk8hdRR,Lucid Dreams,Lucid Dreams,88,0.511,0.566,6,-7.23,0,0.2,0.349,0,0.34,0.218,83.903,239836,4,global
+475,2TH65lNHgvLxCKXM3apjxI,Callaita,Callaita,93,0.61,0.624,2,-4.773,1,0.309,0.6,2.12E-06,0.243,0.244,176.169,250534,4,global
+476,4hPpVbbakQNv8YTHYaOJP4,One Thing Right,One Thing Right,88,0.659,0.623,4,-2.253,1,0.0451,0.0667,0,0.582,0.439,88.042,181824,4,global
+477,7rvyVWja33WG9R97oeJAjx,Envy Me,Envy Me,79,0.74,0.488,1,-7.664,0,0.27,0.234,0,0.241,0.584,149.042,120133,4,global
+478,5xjei7JnROsAzLY2a7RdZU,Shots,Shots,69,0.829,0.582,7,-5.721,0,0.0415,0.525,0,0.0759,0.51,108.028,109373,4,global
+479,5KBARWIxeMGkvUax9VtVC9,My Type,My Type,83,0.899,0.811,2,-6.294,1,0.258,0.000677,0,0.0672,0.587,105.038,126446,4,global
+480,26wLOs3ZuHJa2Ihhx6QIE6,Teeth,Teeth,81,0.749,0.461,10,-2.961,0,0.0416,0.0516,6.24E-06,0.0738,0.42,139.02,204887,4,global
+481,00ko9WaS4jOX1kEk3gvHjf,Hot Shower,Hot Shower,86,0.897,0.522,2,-7.578,1,0.374,0.0016,0,0.0554,0.623,149.986,225924,4,global
+482,6ocbgoVGwYJhOv1GgI9NsF,7 rings,7 rings,90,0.778,0.317,1,-10.732,0,0.334,0.592,0,0.0881,0.327,140.048,178627,4,global
+483,1BxfuPKGuaTgP7aM0Bbdwr,Cruel Summer,Cruel Summer,83,0.552,0.702,9,-5.707,1,0.157,0.117,2.06E-05,0.105,0.564,169.994,178427,4,global
+484,0u2P5u6lvoDfwTYjAADbn4,lovely (with Khalid),lovely (with Khalid),90,0.351,0.296,4,-10.109,0,0.0333,0.934,0,0.095,0.12,115.284,200186,4,global
+485,6wo37KVqFJhtuxPTpLCcfe,Takeaway (feat. Lennon Stella),Takeaway (feat. Lennon Stella),90,0.294,0.505,3,-8.106,1,0.042,0.12,0,0.0977,0.357,85.332,209893,1,global
+486,2rMAtCaTj16NptyVfEIeAC,Cash Shit (feat. DaBaby),Cash Shit (feat. DaBaby),82,0.921,0.635,1,-4.904,1,0.416,0.0218,0,0.0946,0.549,130.028,192540,4,global
+487,3j84U36KvLeXNDPv4t5pI8,Pure Water (with Migos),Pure Water (with Migos),85,0.682,0.559,0,-5.545,1,0.127,0.174,0,0.344,0.137,202.015,192471,4,global
+488,43zdsphuZLzwA9k4DJhU0I,when the party's over,when the party's over,90,0.367,0.111,4,-14.084,1,0.0972,0.978,3.97E-05,0.0897,0.198,82.642,196077,4,global
+489,43rA71bccXFGD4C8GOpIlN,I Forgot That You Existed,I Forgot That You Existed,83,0.664,0.316,5,-10.345,1,0.519,0.298,2.03E-06,0.0812,0.541,92.875,170640,4,global
+490,22vgEDb5hykfaTwLuskFGD,Sucker,Sucker,81,0.842,0.734,1,-5.065,0,0.0588,0.0427,0,0.106,0.952,137.958,181027,4,global
+491,0e7ipj03S05BNilyu5bRzt,rockstar (feat. 21 Savage),rockstar (feat. 21 Savage),89,0.587,0.535,5,-6.09,0,0.0898,0.117,6.56E-05,0.131,0.14,159.847,218147,4,global
+492,6zeeWid2sgw4lap2jV61PZ,Better,Better,82,0.596,0.552,0,-10.278,0,0.097,0.0765,0.334,0.104,0.112,97.949,229320,4,global
+493,7FGq80cy8juXBCD2nrqdWU,Eastside (with Halsey & Khalid),Eastside (with Halsey & Khalid),80,0.632,0.686,6,-7.665,0,0.243,0.549,0,0.2,0.329,89.949,170770,4,global
+494,7dt6x5M1jzdTEt8oCbisTK,Better Now,Better Now,88,0.68,0.563,10,-5.843,1,0.0454,0.354,0,0.136,0.374,145.028,231267,4,global
+495,6Hj9jySrnFppAI0sEMCZpJ,Robbery,Robbery,85,0.685,0.692,2,-5.122,1,0.0457,0.328,0,0.153,0.578,159.966,240051,5,global
+496,3QzAOrNlsabgbMwlZt7TAY,Ballin' (with Roddy Ricch),Ballin' (with Roddy Ricch),87,0.809,0.545,7,-6.678,1,0.0735,0.392,0,0.151,0.244,97.008,180435,4,global
+497,2bT1PH7Cw3J9p3t7nlXCdh,If I Can't Have You,If I Can't Have You,79,0.691,0.823,2,-4.197,1,0.0623,0.487,0,0.134,0.87,123.935,191467,4,global
+498,0rKtyWc8bvkriBthvHKY8d,SLOW DANCING IN THE DARK,SLOW DANCING IN THE DARK,86,0.515,0.479,3,-7.458,1,0.0261,0.544,0.00598,0.191,0.284,88.964,209274,4,global
+499,7f1zjZG77S891Uv4O68yfk,Baby Sitter (feat. Offset),Baby Sitter (feat. Offset),81,0.852,0.73,1,-5.803,1,0.0579,0.0219,0,0.336,0.394,92.506,157693,4,global
+500,643PW82aBMUa1FiWi5VQY7,Babushka Boi,Babushka Boi,81,0.897,0.743,10,-5.446,0,0.222,0.304,4.44E-05,0.137,0.905,134.979,187105,4,global

@@ -4,7 +4,8 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<script src="https://d3js.org/d3.v5.min.js"></script>
+		<link rel="shortcut icon" href="images/spotify-icons-logos/icons/01_RGB/02_PNG/Spotify_Icon_RGB_Green.png">
+		<script src="https://d3js.org/d3.v3.js"></script>
 
 	</head>
 	<body class="subpage">
@@ -26,11 +27,17 @@
 			<section id="main" class="wrapper">
 				<div class="inner">
 					<header class="align-center">
-						<h2>Elements</h2>
-						<p>Aliquam erat volutpat nam dui </p>
+						<h2>Visualize User Data</h2>
+						<p>Visualize the data of our team members' most heard songs on Spotify </p>
+						<p>
+							We provide a parallel coordinate plot between different audio features of spotify and their popularity.
+						</p>
 					</header>
+					<a href="parallel_coords_final.html" class="button special big">Parallel Coordinate Plot</a>
+					<a href="boxplots.html" class="button special big">Boxplots</a>
+					<a href="kmeans.html" class="button special big">Clusters</a>
 
-          <div class="row">
+
 <script>
 	var data_1=[];
 /*	d3.csv("http://35.229.64.212/data/Alex_data.csv", function(d) {
@@ -57,8 +64,15 @@
   data_1=data;
 	console.log(typeof(data_1));
 });*/
+var popularity=[];
+var valence=[];
 d3.csv("http://35.229.64.212/data/Combined_data.csv", function(d) {
-	data_1.push({
+	d.forEach(function(a){
+		popularity.push(a["popularity"]);
+		valence.push(a["valence"])
+	});
+	console.log(popularity,valence);
+	/*data_1.push({
 		id: d.id,
 		name:d.name,
 		popularity:d.popularity,
@@ -76,7 +90,7 @@ d3.csv("http://35.229.64.212/data/Combined_data.csv", function(d) {
 		duration_ms:d.duration_ms,
 		time_signature:d.time_signature,
 		team_member_id:d.team_member_id
-	});
+	});*/
 });
 
 console.log(data_1);
