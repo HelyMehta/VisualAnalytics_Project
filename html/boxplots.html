@@ -39,9 +39,7 @@
         <option value="acousticness">acousticness</option>
     </select>
 </p>
-
-<div id="name">&nbsp;</div><br/>
-
+        
 <!-- div where graph will take place -->
 <div id="my_dataviz"></div>
 
@@ -318,7 +316,7 @@
                 .attr("stroke", "black").attr("class", "box")
                 .style("fill", "#6cc091")
                     .on("mouseover", function(d){
-                        return document.getElementById("details").innerHTML = "[1st Quartile: " + d.value.q1 + "] [Median: " + d.value.median + "] [3rd Quartile: " + d.value.q3 + "] [Min: " + d.value.min + "] [Max: " + d.value.max +"]";
+                        return document.getElementById("details").innerHTML = "[Min: " + d.value.min + "] [1st Quartile: " + d.value.q1 + "] [Median: " + d.value.median + "] [3rd Quartile: " + d.value.q3 + "] [Max: " + d.value.max +"]";
                     })
                     .on("mouseout", function(){ document.getElementById("details").innerHTML = "&nbsp;"; });
             // Show the median
