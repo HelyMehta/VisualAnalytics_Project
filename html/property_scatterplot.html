@@ -228,6 +228,9 @@ document.getElementById("global_insight").innerHTML+= "<b><u>Global Data</u></b>
 "<b><u>Valence</u></b> <br />Min Value:"+global_xvals_min+"<br />Max Value:"+global_xvals_max +"<br />Mean:"+global_xmean.toFixed(2)+"<br /><b><u>"+
 property_name.charAt(0).toUpperCase()+property_name.slice(1)+ ":</u></b><br /> Min Value:"+global_yvals_min+ "<br /> Max Value"+global_yvals_max +"<br />Mean:"+global_ymean.toFixed(2);
 
+//var similar songs = global_data.map(function(d){
+//  if(d.valence)
+//})
 both_xvals=new_data.map(function(d){
   return parseFloat(d[property_name]);
 });
