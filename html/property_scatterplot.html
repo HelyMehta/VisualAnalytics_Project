@@ -334,7 +334,7 @@ line2=svg2.select(".lin")
       .attr("text-anchor", "middle")
       .style("font-size", "16px")
       .style("text-decoration", "underline")
-      .text("Member Data vs "+ property_name.charAt(0).toUpperCase()+(property_name.slice(1)));
+      .text("Member Data")//+ property_name.charAt(0).toUpperCase()+(property_name.slice(1)));
   // draw dots
   svg.selectAll(".dot")
       .data(member_data)
@@ -390,7 +390,7 @@ line2=svg2.select(".lin")
               .attr("text-anchor", "middle")
               .style("font-size", "16px")
               .style("text-decoration", "underline")
-              .text("Global Data vs "+ property_name.charAt(0).toUpperCase()+(property_name.slice(1)));
+              .text("Global Data")//+ property_name.charAt(0).toUpperCase()+(property_name.slice(1)));
       // draw dots
       svg1.selectAll(".dot")
           .data(global_data)
@@ -446,7 +446,7 @@ line2=svg2.select(".lin")
                   .attr("text-anchor", "middle")
                   .style("font-size", "16px")
                   .style("text-decoration", "underline")
-                  .text("Global vs Member Data");
+                  .text("Member and Global Data");
           // draw dots
           svg2.selectAll(".dot")
               .data(new_data)
