@@ -167,7 +167,7 @@ d3.csv('http://35.229.64.212/data/Combined_data.csv', function(data) {
 
   parcoords
     .data(attr_data)
-    .hideAxis(["id","name","team_member_id","key","mode","speechiness","acousticness","liveness","instrumentalness","duration_ms","time_signature"])
+    .hideAxis(["id","name","team_member_id","key","mode","acousticness","liveness","instrumentalness","duration_ms","time_signature"])
     //.ticks(5)
     .dimensions(dimensions)
     .render()
