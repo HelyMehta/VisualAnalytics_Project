@@ -316,7 +316,7 @@
                 .attr("stroke", "black").attr("class", "box")
                 .style("fill", "#6cc091")
                     .on("mouseover", function(d){
-                        return document.getElementById("details").innerHTML = "[Min: " + d.value.min + "] [1st Quartile: " + d.value.q1 + "] [Median: " + d.value.median + "] [3rd Quartile: " + d.value.q3 + "] [Max: " + d.value.max +"]";
+                        return document.getElementById("details").innerHTML = "[Min: " + parseFloat(d.value.min).toFixed(2) + "] [1st Quartile: " + parseFloat(d.value.q1).toFixed(2) + "] [Median: " + parseFloat(d.value.median).toFixed(2) + "] [3rd Quartile: " + parseFloat(d.value.q3).toFixed(2) + "] [Max: " + parseFloat(d.value.max).toFixed(2) +"]";
                     })
                     .on("mouseout", function(){ document.getElementById("details").innerHTML = "&nbsp;"; });
             // Show the median
