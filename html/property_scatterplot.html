@@ -40,7 +40,9 @@
     </div>
   </header>
   <section id="main">
-<br />
+    <div class='row' style='padding: 10px;'>
+      <h2> <a href='index.html'>Visualize></a><a href='compare_data.html'>Compare></a> <span style ="font-weight:bold;text-decoration: underline;">Scatter Plots</span></h2>
+    </div>
     <div class="row">
     							<section class="3u 6u$(medium)">
 
@@ -76,7 +78,10 @@
   </div>
 <div id="second_col" style="float:right;width:50%">
   <div id="both_graphs"></div>
-  <div id="insights"></div>
+  <div id="insights" style="color:black;width:50%">
+    <div id="mem_insight" style="float:left"> </div>
+    <div id="global_insight" style="float:right"> </div>
+  </div>
 </div>
 </section>
 <script src="https://d3js.org/d3.v3.min.js"></script>
@@ -134,6 +139,8 @@ d3.selectAll(".dot").attr("r", 0).remove();
 d3.selectAll(".title").remove();
 d3.selectAll(".label").remove();
 d3.selectAll(".y.axis").remove();
+document.getElementById("mem_insight").innerHTML="";
+document.getElementById("global_insight").innerHTML="";
   // change string (from CSV) into number format
 var new_data=data.filter(function(d){
   return d.team_member_id==member_name || d.team_member_id=="global";
@@ -188,6 +195,17 @@ var mem_data_pairs=[];
 mem_xvals.forEach(function(d,i){
   mem_data_pairs.push([parseFloat(mem_xvals[i]),parseFloat(mem_yvals[i])]);
 });
+var mem_xvals_max=ss.max(mem_xvals);
+var mem_yvals_max=ss.max(mem_yvals);
+var mem_xvals_min=ss.min(mem_xvals);
+var mem_yvals_min=ss.min(mem_yvals);
+var mem_xmean=ss.mean(mem_xvals);
+var mem_ymean=ss.mean(mem_yvals);
+console.log("central");
+console.log(mem_xvals_max,mem_xvals_min,mem_yvals_max,mem_yvals_min,mem_xmean,mem_ymean);
+document.getElementById("mem_insight").innerHTML= "<b><u>Member Data</u></b>"+"<br />"+
+"<b><u>Valence</u></b> <br />Min Value:"+mem_xvals_min+"<br />Max Value:"+mem_xvals_max +"<br />Mean:"+mem_xmean.toFixed(2)+"<br /><b><u>"+
+property_name.charAt(0).toUpperCase()+property_name.slice(1)+ ":</u></b><br /> Min Value:"+mem_yvals_min+ "<br /> Max Value"+mem_yvals_max +"<br />Mean:"+mem_ymean.toFixed(2);
 console.log(mem_data_pairs);
 global_xvals=global_data.map(function(d){
   return parseFloat(d[property_name]);
@@ -199,6 +217,17 @@ var global_data_pairs=[];
 global_xvals.forEach(function(d,i){
   global_data_pairs.push([parseFloat(global_xvals[i]),parseFloat(global_yvals[i])]);
 });
+var global_xvals_max=ss.max(global_xvals);
+var global_yvals_max=ss.max(global_yvals);
+var global_xvals_min=ss.min(global_xvals);
+var global_yvals_min=ss.min(global_yvals);
+var global_xmean=ss.mean(global_xvals);
+var global_ymean=ss.mean(global_yvals);
+
+document.getElementById("global_insight").innerHTML+= "<b><u>Global Data</u></b>"+"<br />"+
+"<b><u>Valence</u></b> <br />Min Value:"+global_xvals_min+"<br />Max Value:"+global_xvals_max +"<br />Mean:"+global_xmean.toFixed(2)+"<br /><b><u>"+
+property_name.charAt(0).toUpperCase()+property_name.slice(1)+ ":</u></b><br /> Min Value:"+global_yvals_min+ "<br /> Max Value"+global_yvals_max +"<br />Mean:"+global_ymean.toFixed(2);
+
 both_xvals=new_data.map(function(d){
   return parseFloat(d[property_name]);
 });
