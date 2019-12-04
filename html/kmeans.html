@@ -79,12 +79,12 @@
   </header>
   <section id="main" >
     <div class='row' style='padding: 10px;'>
-      <h2> <a href='my_data.html'> Visualize </a> > <span style = 'text-decoration: underline; font-weight: bold'>Clusters</span></h2>
+      <h2><a href='index.html'>Visualize></a><a href='my_data.html'>Your Data></a><span style = 'text-decoration: underline; font-weight: bold'>Clusters</span></h2>
     </div>
     <!-- <hr/> -->
 
     <div class="row" style='padding: 15px;'>
-      
+
       <section class="8u">
 
         <div class="chart">
@@ -127,13 +127,13 @@
               <option value="speechiness">Speechiness</option>
               <option value="valence">Valence</option>
             </select>
-          </section> 
+          </section>
         </div>
 
         <div class = "row" style="padding: 5px;">
           <section class="4u" >
             <!-- <label for="param_y">Y label:</label>   -->
-            Y Label: 
+            Y Label:
           </section>
           <section class="8u">
             <select id="param_y" name="param_y" onchange="">
@@ -163,18 +163,18 @@
 
           <div>
             <label class="12u" for="K">Number of clusters:</label>
-            <input class="12u" type="number" id="K" min="2" max="50" value="5">
+            <input class="12u" type="number" id="K" min="2" max="50" value="3">
           </div>
 
-          <div>
+          <div class="row" style="padding:5px;">
             <br/>
             <button class="12u button small" id="load" onclick="renderKmeans(team_member.value, K.value, param_x.value, param_y.value);" style="">Set Parameters</button>
           </div>
           <div>
-            <br/>
-        
+
+
          <div class = "row" style="padding: 5px;">
-            <button class="12u button special small" id="run" style="">Generate!</button>
+            <button class="12u button special small" id="run">Generate!</button>
           </div>
 
 
@@ -182,9 +182,9 @@
         </section>
       </div>
 
-    
+
     </div>
-    
+
 <script>
 
   function renderKmeans(mem_id, K, param_x, param_y){
