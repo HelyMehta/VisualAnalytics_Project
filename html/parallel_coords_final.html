@@ -152,7 +152,7 @@ var sltBrushMode = d3.select('#team_member');
 // load csv file and create the chart
 function renderPCP(mem_id){
   console.log(mem_id);
-d3.csv('http://35.229.64.212/data/Combined_data.csv', function(data) {
+d3.csv('http://34.227.227.198/VisualAnalytics_Project/csv_data/Combined_data.csv', function(data) {
   sltBrushMode.on('change', function() {
   parcoords.brushReset();
 });
