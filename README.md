@@ -1,9 +1,6 @@
 # Steps to Run
-
+Clone the repository to /var/www/html/ for any instance running Apache. 
 ## Start Server 
+The project will be available at the http://{server_ip_address}/VisualAnalytics_Project/html/index.html
 
-python -m http.server 8000 --bind 127.0.0.1
-
-## Run Chrome without websecurity
-
-chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
+The project is currently live at: http://34.227.227.198/VisualAnalytics_Project/html/index.html
